@@ -14,13 +14,11 @@ class Home extends StatefulWidget {
 /// This is the private State class that goes with Home.
 class _HomeState extends State<Home> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
 
   static const List<Widget> _widgetOptions = <Widget>[
-    ToDoPage(optionStyle: optionStyle),
-    CalendarPage(optionStyle: optionStyle),
-    SettingPage(optionStyle: optionStyle),
+    ToDoPage(),
+    CalendarPage(),
+    SettingPage(),
   ];
 
   void _onItemTapped(int index) {
