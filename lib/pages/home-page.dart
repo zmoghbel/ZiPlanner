@@ -61,11 +61,7 @@ class _HomeState extends State<Home> {
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.assignment_turned_in),
-<<<<<<< HEAD:lib/pages/home-page.dart
-              label: 'ToDo',
-=======
               label: 'To do',
->>>>>>> 6ef6d91afbfa27136a4577b2923725c8735064e5:lib/pages/home.dart
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.calendar_today_sharp),
