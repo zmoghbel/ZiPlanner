@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ziplanner/pages/todopage.dart';
-import 'package:ziplanner/pages/calendarpage.dart';
-import 'package:ziplanner/pages/settingpage.dart';
+import 'package:ziplanner/pages/todo-page.dart';
+import 'package:ziplanner/pages/calendar-page.dart';
+import 'package:ziplanner/pages/setting-page.dart';
 
 /// Code by Zeinab on 2020/10/25.
 class Home extends StatefulWidget {
@@ -43,7 +43,7 @@ class _HomeState extends State<Home> {
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.assignment_turned_in),
-              label: 'Home',
+              label: 'ToDo',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.calendar_today_sharp),
