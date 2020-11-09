@@ -51,17 +51,6 @@ class _ToDoAddState extends State<ToDoAdd> {
                       onChanged: (value) {},
                     ),
                     SizedBox(height: 10.0),
-                    Switch(
-                      value: isSwitched,
-                      onChanged: (value) {
-                        setState(() {
-                          isSwitched = value;
-                          print(isSwitched);
-                        });
-                      },
-                      activeTrackColor: Colors.orangeAccent[700],
-                      activeColor: Colors.white,
-                    ),
                     Container(
                       height: 300,
                       child: CupertinoDatePicker(
