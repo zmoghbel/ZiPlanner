@@ -15,7 +15,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _selectedIndex = 0;
 
-  static const List<Widget> _widgetOptions = <Widget>[
+  static List<Widget> _widgetOptions = <Widget>[
     ToDoPage(),
     CalendarPage(),
     SettingPage(),
@@ -33,7 +33,25 @@ class _HomeState extends State<Home> {
       padding: const EdgeInsets.all(8.0),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('To Do List'),
+          leading: Icon(
+            Icons.subject,
+            color: Colors.black,
+          ),
+          backgroundColor: Colors.white,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text('To Do',
+                  style: TextStyle(color: Colors.black, fontSize: 25)),
+              SizedBox(
+                width: 140,
+              ),
+              Icon(
+                Icons.search,
+                color: Colors.black,
+              ),
+            ],
+          ),
           centerTitle: true,
         ),
         body: Center(
@@ -43,7 +61,11 @@ class _HomeState extends State<Home> {
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.assignment_turned_in),
+<<<<<<< HEAD:lib/pages/home-page.dart
               label: 'ToDo',
+=======
+              label: 'To do',
+>>>>>>> 6ef6d91afbfa27136a4577b2923725c8735064e5:lib/pages/home.dart
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.calendar_today_sharp),
