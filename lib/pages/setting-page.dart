@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ziplanner/components/top-bar.dart';
 
 class SettingPage extends StatelessWidget {
   const SettingPage({
@@ -7,8 +8,14 @@ class SettingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      'Index 2: Setting',
+    return TopBar(
+      text: 'Setting',
+      uniqueHeroTag: 'setting',
+      child: Container(
+        child: Text(
+          'Index 2: Setting',
+        ),
+      ),
     );
   }
 }
