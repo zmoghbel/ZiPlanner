@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:ziplanner/pages/todo-page.dart';
 import 'package:ziplanner/pages/calendar-page.dart';
 import 'package:ziplanner/pages/setting-page.dart';
+import 'package:ziplanner/to_do_list_icons.dart';
 
 /// Code by Zeinab on 2020/10/25.
 class Home extends StatefulWidget {
@@ -13,70 +15,48 @@ class Home extends StatefulWidget {
 
 /// This is the private State class that goes with Home.
 class _HomeState extends State<Home> {
-  int _selectedIndex = 0;
-
-  static List<Widget> _widgetOptions = <Widget>[
-    ToDoPage(),
-    CalendarPage(),
-    SettingPage(),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+  final GlobalKey<NavigatorState> firstTabNavKey = GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> secondTabNavKey = GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> thirdTabNavKey = GlobalKey<NavigatorState>();
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Scaffold(
-        appBar: AppBar(
-          leading: Icon(
-            Icons.subject,
-            color: Colors.black,
+    return CupertinoTabScaffold(
+      tabBar: CupertinoTabBar(
+        activeColor: Colors.orange,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(ToDoList.todolist),
+            label: 'ToDo',
           ),
-          backgroundColor: Colors.white,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Text('To Do',
-                  style: TextStyle(color: Colors.black, fontSize: 25)),
-              SizedBox(
-                width: 140,
-              ),
-              Icon(
-                Icons.search,
-                color: Colors.black,
-              ),
-            ],
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_today),
+            label: 'Calendar',
           ),
-          centerTitle: true,
-        ),
-        body: Center(
-          child: _widgetOptions.elementAt(_selectedIndex),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.assignment_turned_in),
-              label: 'To do',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_today_sharp),
-              label: 'Calendar',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              label: 'Setting',
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: Colors.amber[800],
-          onTap: _onItemTapped,
-        ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Setting',
+          ),
+        ],
       ),
+      tabBuilder: (context, index) {
+        if (index == 0) {
+          return CupertinoTabView(
+            navigatorKey: firstTabNavKey,
+            builder: (BuildContext context) => ToDoPage(),
+          );
+        } else if (index == 1) {
+          return CupertinoTabView(
+            navigatorKey: secondTabNavKey,
+            builder: (BuildContext context) => CalendarPage(),
+          );
+        } else {
+          return CupertinoTabView(
+            navigatorKey: thirdTabNavKey,
+            builder: (BuildContext context) => SettingPage(),
+          );
+        }
+      },
     );
   }
 }
