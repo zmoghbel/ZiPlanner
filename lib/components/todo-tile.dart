@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class TodoTile extends StatefulWidget {
-  String title;
-  String date;
-  String clock;
+  final String title;
+  final String date;
+  final String clock;
   TodoTile(this.title, this.date, {this.clock});
   @override
   _TodoTileState createState() => _TodoTileState();

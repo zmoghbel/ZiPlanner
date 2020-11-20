@@ -22,75 +22,82 @@ class _ToDoAddState extends State<ToDoAdd> {
     return TopBar(
       text: 'ToDo Add',
       uniqueHeroTag: 'todoAdd',
-      child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Container(
-            padding: EdgeInsets.all(20.0),
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(
-                'Title',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(height: 5.0),
-              TextFormField(
-                controller: myController,
-                keyboardType: TextInputType.multiline,
-                decoration: InputDecoration(
-                    hintText: 'Task / Event Title',
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey, width: 32.0),
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey, width: 1.0),
-                        borderRadius: BorderRadius.circular(5.0))),
-                onChanged: (value) {},
-              ),
-              SizedBox(height: 10.0),
-              Container(
-                height: 300,
-                child: CupertinoDatePicker(
-                    mode: CupertinoDatePickerMode.dateAndTime,
-                    onDateTimeChanged: (datetime) {
-                      print(datetime.toString());
-                    }),
-              ),
-              SizedBox(height: 10.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  RaisedButton(
-                    color: Colors.amber,
-                    child: Text('save',
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold)),
-                    onPressed: () {
-                      return showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialog(
-                            content: Text(myController.text),
-                          );
-                        },
-                      );
-                    },
-                  ),
-                  RaisedButton(
-                    color: Colors.green,
-                    child: Text(
-                      'cancel',
+      child: Scaffold(
+        body: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Container(
+              padding: EdgeInsets.all(20.0),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Title',
                       style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-            ]),
-          )),
+                    SizedBox(height: 5.0),
+                    TextFormField(
+                      controller: myController,
+                      keyboardType: TextInputType.multiline,
+                      decoration: InputDecoration(
+                          hintText: 'Task / Event Title',
+                          border: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 32.0),
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.grey, width: 1.0),
+                              borderRadius: BorderRadius.circular(5.0))),
+                      onChanged: (value) {},
+                    ),
+                    SizedBox(height: 10.0),
+                    Container(
+                      height: 300,
+                      child: CupertinoDatePicker(
+                          mode: CupertinoDatePickerMode.dateAndTime,
+                          onDateTimeChanged: (datetime) {
+                            print(datetime.toString());
+                          }),
+                    ),
+                    SizedBox(height: 10.0),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        RaisedButton(
+                          color: Colors.amber,
+                          child: Text('save',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold)),
+                          onPressed: () {
+                            return showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  content: Text(myController.text),
+                                );
+                              },
+                            );
+                          },
+                        ),
+                        RaisedButton(
+                          color: Colors.green,
+                          child: Text(
+                            'cancel',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
+                  ]),
+            )),
+      ),
     );
   }
 }
