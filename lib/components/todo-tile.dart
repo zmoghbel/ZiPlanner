@@ -15,16 +15,23 @@ class _TodoTileState extends State<TodoTile> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Icon(Icons.check_box_outline_blank_rounded),
+      leading: Icon(
+        Icons.circle,
+      ),
       title: Text(
         widget.title,
-        style: TextStyle(fontSize: 25),
+        style: TextStyle(
+          fontSize: 18,
+          color: Colors.black,
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w700,
+        ),
       ),
       subtitle: widget.clock != null ? Text(widget.clock) : Text(''),
       trailing: widget.clock != null
           ? Switch(
               activeThumbImage: AssetImage(
-                'lib/assets/alarm.png',
+                'assets/alarm.png',
               ),
               activeColor: Colors.orange,
               value: _value,
