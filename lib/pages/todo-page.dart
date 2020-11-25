@@ -1,11 +1,12 @@
-import 'dart:io';
+//import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ziplanner/components/todo-text-field.dart';
-import 'package:ziplanner/components/todo-tile.dart';
+//import 'package:ziplanner/components/todo-tile.dart';
 import 'package:ziplanner/components/top-bar.dart';
-import 'package:ziplanner/pages/todo-add-page.dart';
+//import 'package:ziplanner/pages/todo-add-page.dart';
+import 'package:ziplanner/styles.dart';
 
 class ToDoPage extends StatefulWidget {
   //const ToDoPage({Key key,}) : super(key: key);
@@ -19,26 +20,65 @@ class _ToDoPageState extends State<ToDoPage> {
   Widget build(BuildContext context) {
     return TopBar(
       text: 'ToDo',
+      style: kappBarTitleStyle,
       uniqueHeroTag: 'todo',
       child: Scaffold(
+        backgroundColor: Color(0xFFF5F5F5),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Expanded(
               flex: 8,
               child: Container(
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.all(25),
                 child: ListView(
                   // crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Row(
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20.0, bottom: 10),
+                      child: Text(
+                        'Today',
+                        style: kdayTitleStyle,
+                      ),
+                    ),
+                    TodoTextField(),
+                    SizedBox(height: 40),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20.0, bottom: 10),
+                      child: Text(
+                        'Tomorrow',
+                        style: kdayTitleStyle,
+                      ),
+                    ),
+                    TodoTextField(),
+                    SizedBox(height: 40),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20.0, bottom: 10),
+                      child: Text(
+                        'In The Future',
+                        style: kdayTitleStyle,
+                      ),
+                    ),
+                    TodoTextField(),
+                    SizedBox(height: 40),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// TodoTile('Visit my friend', 'today', clock: '09:30'),
+// TodoTile('Buy a new jacket', 'Tomorrow'),
+/* Row(
                       children: [
                         Text(
                           'Today',
-                          style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.blue[900],
-                          ),
+                          style: dayTitleStyle,
                         ),
                         new Spacer(),
                         RawMaterialButton(
@@ -63,20 +103,4 @@ class _ToDoPageState extends State<ToDoPage> {
                           shape: CircleBorder(),
                         ),
                       ],
-                    ),
-                    TodoTile('go to the gym', 'today', clock: '09:30'),
-                    TodoTile('Buy a new jacket', 'Tomorrow'),
-                  ],
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: TodoTextField(),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+                    ),*/

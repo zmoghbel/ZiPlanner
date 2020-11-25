@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:io' show Platform;
 
+import '../ico_planner_icons.dart';
+
 class TopBar extends StatelessWidget {
   final String text;
   final TextStyle style;
@@ -49,9 +51,10 @@ class TopBar extends StatelessWidget {
     } else {
       return CupertinoPageScaffold(
         navigationBar: CupertinoNavigationBar(
-          backgroundColor: Colors.blue,
+          backgroundColor: Colors.white,
           heroTag: uniqueHeroTag,
           transitionBetweenRoutes: false,
+          leading: Icon(IcoPlanner.check),
           middle: Text(
             text,
             style: style,
