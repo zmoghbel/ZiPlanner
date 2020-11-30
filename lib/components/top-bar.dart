@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'dart:io' show Platform;
+//import 'dart:io' show Platform;
 
 import '../ico_planner_icons.dart';
 
@@ -19,7 +19,33 @@ class TopBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (Platform.isAndroid) {
+    return CupertinoPageScaffold(
+      navigationBar: CupertinoNavigationBar(
+        // border: Border(
+        //   bottom: BorderSide(width: 3, color: Theme.of(context).dividerColor),
+        // ),
+        backgroundColor: Colors.white,
+        heroTag: uniqueHeroTag,
+        transitionBetweenRoutes: false,
+        leading: Icon(
+          Icons.subject,
+          color: Color(0xFF324755),
+        ),
+        middle: Text(
+          text,
+          style: style,
+        ),
+        trailing: Icon(
+          Icons.search,
+          color: Color(0xFF324755),
+        ),
+      ),
+      child: child,
+    );
+  }
+}
+
+/*if (Platform.isAndroid) {
       return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
@@ -30,11 +56,13 @@ class TopBar extends StatelessWidget {
           ),
           title: Container(
             margin: EdgeInsets.fromLTRB(5, 20, 5, 10),
-            child: Text(text,
-                style: TextStyle(
-                  color: Colors.black54,
-                  fontSize: 20,
-                )),
+            child: Text(
+              text,
+              style: TextStyle(
+                color: Colors.black54,
+                fontSize: 20,
+              ),
+            ),
           ),
           actions: [
             Padding(
@@ -48,20 +76,4 @@ class TopBar extends StatelessWidget {
         ),
         body: SafeArea(child: child),
       );
-    } else {
-      return CupertinoPageScaffold(
-        navigationBar: CupertinoNavigationBar(
-          backgroundColor: Colors.white,
-          heroTag: uniqueHeroTag,
-          transitionBetweenRoutes: false,
-          leading: Icon(IcoPlanner.check),
-          middle: Text(
-            text,
-            style: style,
-          ),
-        ),
-        child: child,
-      );
-    }
-  }
-}
+    } else {};*/
