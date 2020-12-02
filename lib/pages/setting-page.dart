@@ -9,7 +9,7 @@ class SettingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TopBar(
-      text: 'Setting',
+      title: 'Setting',
       uniqueHeroTag: 'setting',
       child: Container(
         child: Text(

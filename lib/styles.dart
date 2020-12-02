@@ -14,6 +14,13 @@ const TextStyle kappBarTitleStyle = TextStyle(
   fontWeight: FontWeight.w500,
 );
 
+const TextStyle kappBarSubtitleStyle = TextStyle(
+  color: Color(0xFF5F86A1),
+  fontFamily: 'Roboto',
+  fontWeight: FontWeight.w500,
+  fontSize: 13,
+);
+
 const TextStyle kTodoTextFieldHintStyle = TextStyle(
   fontSize: 18,
   color: Color(0xFFCCCCCC),

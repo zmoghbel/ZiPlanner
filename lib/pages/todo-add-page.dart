@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:ziplanner/components/top-bar.dart';
+import 'package:ziplanner/styles.dart';
 
 class ToDoAdd extends StatefulWidget {
   @override
@@ -20,7 +21,10 @@ class _ToDoAddState extends State<ToDoAdd> {
   @override
   Widget build(BuildContext context) {
     return TopBar(
-      text: 'ToDo Add',
+      title: 'ToDo',
+      titleStyle: kappBarTitleStyle,
+      subtitle: 'Details',
+      subtitleStyle: kappBarSubtitleStyle,
       uniqueHeroTag: 'todoAdd',
       child: Scaffold(
         body: SingleChildScrollView(

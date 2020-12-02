@@ -61,11 +61,11 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-     - family:  IcoPlanner
+
+     - family: ZipIcons
        fonts:
-         - asset: lib/icons/IcoPlanner.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+         - asset: assets/fonts/zip-icons.ttf
+
      - family: Roboto
        fonts:
          - asset: assets/fonts/Roboto-Bold.ttf
@@ -75,6 +75,7 @@ flutter:
          - asset: assets/fonts/Roboto-Regular.ttf
            style: normal
 
+    
 
            
    

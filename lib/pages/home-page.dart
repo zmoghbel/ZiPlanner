@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:ziplanner/pages/todo-page.dart';
 import 'package:ziplanner/pages/calendar-page.dart';
 import 'package:ziplanner/pages/setting-page.dart';
-import 'package:ziplanner/ico_planner_icons.dart';
+import 'package:ziplanner/zip-icons.dart';
 
 /// Code by Zeinab on 2020/10/25.
 class Home extends StatefulWidget {
@@ -26,15 +26,15 @@ class _HomeState extends State<Home> {
         activeColor: Colors.orange,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(IcoPlanner.todo),
+            icon: Icon(ZipIcons.todo_list),
             label: 'ToDo',
           ),
           BottomNavigationBarItem(
-            icon: Icon(IcoPlanner.calendar),
+            icon: Icon(ZipIcons.calendar),
             label: 'Calendar',
           ),
           BottomNavigationBarItem(
-            icon: Icon(IcoPlanner.settings),
+            icon: Icon(ZipIcons.setting),
             label: 'Setting',
           ),
         ],

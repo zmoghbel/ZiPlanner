@@ -19,8 +19,10 @@ class _ToDoPageState extends State<ToDoPage> {
   @override
   Widget build(BuildContext context) {
     return TopBar(
-      text: 'ToDo',
-      style: kappBarTitleStyle,
+      title: 'ToDo',
+      titleStyle: kappBarTitleStyle,
+      subtitle: 'Task & Events',
+      subtitleStyle: kappBarSubtitleStyle,
       uniqueHeroTag: 'todo',
       child: Scaffold(
         backgroundColor: Color(0xFFF5F5F5),

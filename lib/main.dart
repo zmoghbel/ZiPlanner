@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ziplanner/pages/home-page.dart';
-import 'package:ziplanner/pages/todo-add-page.dart';
+//import 'package:ziplanner/pages/todo-add-page.dart';
 
 void main() {
   runApp(
@@ -9,7 +9,7 @@ void main() {
       initialRoute: '/',
       routes: {
         '/': (context) => Home(),
-        '/todoAdd': (context) => ToDoAdd(),
+        //'/todoAdd': (context) => ToDoAdd(),
       },
       localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
         DefaultMaterialLocalizations.delegate,

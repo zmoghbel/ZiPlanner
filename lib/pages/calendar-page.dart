@@ -10,7 +10,7 @@ class CalendarPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TopBar(
-      text: 'Calendar',
+      title: 'Calendar',
       uniqueHeroTag: 'calendar',
       child: Container(
         child: Text(
