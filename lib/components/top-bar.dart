@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:ziplanner/zip-icons.dart';
+import 'package:flutter_svg/svg.dart';
+
 //import 'dart:io' show Platform;
 
 class TopBar extends StatelessWidget {
@@ -32,10 +33,17 @@ class TopBar extends StatelessWidget {
           backgroundColor: Color(0xFFFFFFFF),
           heroTag: uniqueHeroTag,
           transitionBetweenRoutes: false,
-          leading: Icon(
-            ZipIcons.hamburger_menu,
-            color: Color(0xFF324755),
-            size: 20,
+          leading: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: GestureDetector(
+              onTap: () {
+                print('Hambergur menu was tapped');
+              },
+              child: SvgPicture.asset(
+                'assets/icons/hamburger-menu.svg',
+                color: Color(0xFF324755),
+              ),
+            ),
           ),
           middle: Column(
             children: [
@@ -43,7 +51,7 @@ class TopBar extends StatelessWidget {
                 title,
                 style: titleStyle,
               ),
-              SizedBox(height: 3),
+              SizedBox(height: 2),
               Text(
                 subtitle,
                 style: subtitleStyle,
@@ -51,10 +59,15 @@ class TopBar extends StatelessWidget {
             ],
           ),
           trailing: Padding(
-            padding: const EdgeInsets.only(right: 5, bottom: 10),
-            child: Icon(
-              ZipIcons.search,
-              color: Color(0xFF324755),
+            padding: const EdgeInsets.all(10),
+            child: GestureDetector(
+              onTap: () {
+                print('Search was tapped');
+              },
+              child: SvgPicture.asset(
+                'assets/icons/search.svg',
+                color: Color(0xFF324755),
+              ),
             ),
           ),
         ),

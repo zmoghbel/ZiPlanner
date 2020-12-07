@@ -2,8 +2,10 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+//import 'package:ziplanner/pages/todo-add-page.dart';
+//import 'package:ziplanner/zip-icons.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ziplanner/pages/todo-add-page.dart';
-import 'package:ziplanner/zip-icons.dart';
 
 import '../styles.dart';
 
@@ -35,7 +37,23 @@ class _TodoTextFieldState extends State<TodoTextField> {
             hintStyle: kTodoTextFieldHintStyle,
           ),
         ),
-        trailing: GestureDetector(
+        trailing: Builder(
+          builder: (context) => IconButton(
+            icon: SvgPicture.asset(
+              "assets/icons/add-detail.svg",
+              color: inactiveColor,
+            ),
+            onPressed: () {
+              Navigator.pushNamed(context, ToDoAdd.path);
+            },
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/* GestureDetector(
           onDoubleTap: () {
             print('onDoubleTap was tapped');
           },
@@ -47,13 +65,8 @@ class _TodoTextFieldState extends State<TodoTextField> {
                   builder: (context) => ToDoAdd(),
                 ));
           },
-          child: Icon(
-            ZipIcons.add_circle,
-            color: inactiveColor,
-            size: 40,
-          ),
-        ),
-      ),
-    );
-  }
-}
+          child: // Icon(
+          //   ZipIcons.add_circle,
+          //   color: inactiveColor,
+          //   size: 40,
+          // ),*/
