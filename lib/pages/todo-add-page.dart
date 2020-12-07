@@ -4,6 +4,7 @@ import 'package:ziplanner/components/top-bar.dart';
 import 'package:ziplanner/styles.dart';
 
 class ToDoAdd extends StatefulWidget {
+  static const String path = '/todo-add';
   @override
   _ToDoAddState createState() => _ToDoAddState();
 }
