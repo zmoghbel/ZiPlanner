@@ -68,7 +68,8 @@ class TopBar extends StatelessWidget {
               },
               child: Icon(
                 ZipIcons.search,
-                color: Colors.black54,
+                color: Color(0xFF324755),
+                size: 25,
               ),
 
               // SvgPicture.asset(

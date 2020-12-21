@@ -19,7 +19,6 @@ class ZipIcons {
   ZipIcons._();
 
   static const _kFontFam = 'ZipIcons';
-
   static const _kFontPkg = null;
 
   static const IconData add_circle =
