@@ -72,7 +72,9 @@ flutter:
          - asset: assets/fonts/Roboto-Regular.ttf
            style: normal
 
-    
+     - family: ZipIcons
+       fonts:
+         - asset: assets/fonts/Zip-icons.ttf
 
            
    

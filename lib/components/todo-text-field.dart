@@ -2,12 +2,10 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-//import 'package:ziplanner/pages/todo-add-page.dart';
-//import 'package:ziplanner/zip-icons.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ziplanner/pages/todo-add-page.dart';
 
 import '../styles.dart';
+import '../zip-icons.dart';
 
 class TodoTextField extends StatefulWidget {
   @override
@@ -39,9 +37,10 @@ class _TodoTextFieldState extends State<TodoTextField> {
         ),
         trailing: Builder(
           builder: (context) => IconButton(
-            icon: SvgPicture.asset(
-              "assets/icons/add-detail.svg",
+            icon: Icon(
+              ZipIcons.add_circle,
               color: inactiveColor,
+              size: 35,
             ),
             onPressed: () {
               Navigator.pushNamed(context, ToDoAdd.path);

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_svg/svg.dart';
+
+import '../zip-icons.dart';
 
 //import 'dart:io' show Platform;
 
@@ -39,9 +40,10 @@ class TopBar extends StatelessWidget {
               onTap: () {
                 print('Hambergur menu was tapped');
               },
-              child: SvgPicture.asset(
-                'assets/icons/hamburger-menu.svg',
+              child: Icon(
+                ZipIcons.hamburger_menu,
                 color: Color(0xFF324755),
+                size: 20,
               ),
             ),
           ),
@@ -64,10 +66,15 @@ class TopBar extends StatelessWidget {
               onTap: () {
                 print('Search was tapped');
               },
-              child: SvgPicture.asset(
-                'assets/icons/search.svg',
-                color: Color(0xFF324755),
+              child: Icon(
+                ZipIcons.search,
+                color: Colors.black54,
               ),
+
+              // SvgPicture.asset(
+              //   'assets/icons/search.svg',
+              //   color: Color(0xFF324755),
+              // ),
             ),
           ),
         ),
@@ -99,10 +106,7 @@ class TopBar extends StatelessWidget {
           actions: [
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Icon(
-                Icons.search,
-                color: Colors.black54,
-              ),
+              
             ),
           ],
         ),

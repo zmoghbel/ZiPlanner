@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:ziplanner/pages/todo-page.dart';
 import 'package:ziplanner/pages/calendar-page.dart';
 import 'package:ziplanner/pages/setting-page.dart';
+
+import '../zip-icons.dart';
 
 /// Code by Zeinab on 2020/10/25.
 class Home extends StatefulWidget {
@@ -26,29 +27,27 @@ class _HomeState extends State<Home> {
         activeColor: Colors.orange,
         items: [
           BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/icons/todo.svg',
-              color: Color(0xFFCCCCCC),
+            icon: Icon(
+              ZipIcons.todo_list,
+              //color: Color(0xFFCCCCCC),
             ),
-
-            //Icon(ZipIcons.todo_list),
             label: 'ToDo',
           ),
           BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/icons/calendar.svg',
-              color: Color(0xFFCCCCCC),
+            icon: Icon(
+              ZipIcons.calendar,
+              //color: Color(0xFFCCCCCC),
             ),
-
-            //Icon(ZipIcons.calendar),
             label: 'Calendar',
           ),
           BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/icons/settings.svg',
-              color: Color(0xFFCCCCCC),
+            icon: Icon(
+              ZipIcons.setting,
             ),
-            //Icon(ZipIcons.setting),
+
+            // SvgPicture.asset(
+            //   'assets/icons/settings.svg',
+            // ),
             label: 'Setting',
           ),
         ],
