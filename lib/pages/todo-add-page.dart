@@ -4,7 +4,7 @@ import 'package:ziplanner/components/top-bar.dart';
 import 'package:ziplanner/styles.dart';
 
 class ToDoAdd extends StatefulWidget {
-  static const String path = '/todo-add';
+  static const String path = '/todo';
   @override
   _ToDoAddState createState() => _ToDoAddState();
 }
@@ -71,8 +71,7 @@ class _ToDoAddState extends State<ToDoAdd> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        RaisedButton(
-                          color: Colors.amber,
+                        ElevatedButton(
                           child: Text('save',
                               style: TextStyle(
                                   color: Colors.black,
@@ -88,8 +87,8 @@ class _ToDoAddState extends State<ToDoAdd> {
                             );
                           },
                         ),
-                        RaisedButton(
-                          color: Colors.green,
+                        ElevatedButton(
+                          //color: Colors.green,
                           child: Text(
                             'cancel',
                             style: TextStyle(

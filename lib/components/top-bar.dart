@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-
 import '../zip-icons.dart';
-
-//import 'dart:io' show Platform;
 
 class TopBar extends StatelessWidget {
   final String title;
