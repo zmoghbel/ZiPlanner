@@ -21,51 +21,47 @@ class _TodoTextFieldState extends State<TodoTextField> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      //shadowColor: Color(0xFF00000029),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-      child: ListTile(
-        title: TextField(
-          controller: _controller,
-          decoration: new InputDecoration(
-            fillColor: Color(0xFFFFFFFF),
-            border: InputBorder.none,
-            hintText: "I will ...",
-            hintStyle: kTodoTextFieldHintStyle,
-          ),
-        ),
-        trailing: Builder(
-          builder: (context) => IconButton(
-            icon: Icon(
-              ZipIcons.add_circle,
-              color: inactiveColor,
-              size: 35,
+    return Container(
+      height: 60,
+      decoration: BoxDecoration(
+        borderRadius: new BorderRadius.circular(27),
+        boxShadow: [
+          BoxShadow(
+              color: Color(0xFFCCCCCC),
+              blurRadius: 3.0,
+              spreadRadius: 0.2,
+              offset: Offset.fromDirection(90, 5))
+        ],
+      ),
+      child: TextField(
+        controller: _controller,
+        decoration: InputDecoration(
+          fillColor: Color(0xFFFFFFFF),
+          filled: true,
+          hintText: 'I will...',
+          hintStyle: kTodoTextFieldHintStyle,
+          suffixIcon: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+            child: IconButton(
+              padding: EdgeInsets.all(0),
+              icon: Icon(
+                ZipIcons.add_circle,
+                color: inactiveColor,
+                size: 49,
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, ToDoAdd.path);
+              },
             ),
-            onPressed: () {
-              Navigator.pushNamed(context, ToDoAdd.path);
-            },
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(27),
+            ),
+            borderSide: BorderSide.none,
           ),
         ),
       ),
     );
   }
 }
-
-/* GestureDetector(
-          onDoubleTap: () {
-            print('onDoubleTap was tapped');
-          },
-          onTap: () {
-            print('onTap was tapped');
-            Navigator.push(
-                context,
-                CupertinoPageRoute(
-                  builder: (context) => ToDoAdd(),
-                ));
-          },
-          child: // Icon(
-          //   ZipIcons.add_circle,
-          //   color: inactiveColor,
-          //   size: 40,
-          // ),*/
