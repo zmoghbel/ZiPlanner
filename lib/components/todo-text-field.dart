@@ -17,8 +17,9 @@ class _TodoTextFieldState extends State<TodoTextField> {
 
   final Color activeColor = Color(0xFFD97D54);
 
-  TextEditingController _controller = TextEditingController();
+  bool hasText = false;
 
+  TextEditingController _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,6 +36,11 @@ class _TodoTextFieldState extends State<TodoTextField> {
       ),
       child: TextField(
         controller: _controller,
+        onChanged: (value) {
+          setState(() {
+            hasText = value.isNotEmpty ? true : false;
+          });
+        },
         decoration: InputDecoration(
           fillColor: Color(0xFFFFFFFF),
           filled: true,
@@ -46,12 +52,12 @@ class _TodoTextFieldState extends State<TodoTextField> {
               padding: EdgeInsets.all(0),
               icon: Icon(
                 ZipIcons.add_circle,
-                color: inactiveColor,
+                color: hasText ? activeColor : inactiveColor,
                 size: 49,
               ),
-              onPressed: () {
-                Navigator.pushNamed(context, ToDoAdd.path);
-              },
+              onPressed: (_controller.text.isNotEmpty)
+                  ? () => Navigator.pushNamed(context, ToDoAdd.path)
+                  : null,
             ),
           ),
           border: OutlineInputBorder(
@@ -59,6 +65,10 @@ class _TodoTextFieldState extends State<TodoTextField> {
               Radius.circular(27),
             ),
             borderSide: BorderSide.none,
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(28)),
+            borderSide: BorderSide(width: 2, color: activeColor),
           ),
         ),
       ),
