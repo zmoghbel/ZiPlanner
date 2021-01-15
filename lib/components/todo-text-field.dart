@@ -13,10 +13,6 @@ class TodoTextField extends StatefulWidget {
 }
 
 class _TodoTextFieldState extends State<TodoTextField> {
-  final Color inactiveColor = Color(0xFFCCCCCC);
-
-  final Color activeColor = Color(0xFFD97D54);
-
   bool hasText = false;
 
   TextEditingController _controller = TextEditingController();
@@ -26,13 +22,7 @@ class _TodoTextFieldState extends State<TodoTextField> {
       height: 60,
       decoration: BoxDecoration(
         borderRadius: new BorderRadius.circular(27),
-        boxShadow: [
-          BoxShadow(
-              color: Color(0xFFCCCCCC),
-              blurRadius: 3.0,
-              spreadRadius: 0.2,
-              offset: Offset.fromDirection(90, 5))
-        ],
+        boxShadow: [BoxShadow(color: Color(0xFFCCCCCC), blurRadius: 3.0, spreadRadius: 0.2, offset: Offset.fromDirection(90, 5))],
       ),
       child: TextField(
         controller: _controller,
@@ -55,9 +45,7 @@ class _TodoTextFieldState extends State<TodoTextField> {
                 color: hasText ? activeColor : inactiveColor,
                 size: 49,
               ),
-              onPressed: (_controller.text.isNotEmpty)
-                  ? () => Navigator.pushNamed(context, ToDoAdd.path)
-                  : null,
+              onPressed: (_controller.text.isNotEmpty) ? () => Navigator.pushNamed(context, ToDoAdd.path) : null,
             ),
           ),
           border: OutlineInputBorder(

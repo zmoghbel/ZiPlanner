@@ -1,9 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:ziplanner/pages/todo-page.dart';
+import 'package:flutter/material.dart';
 import 'package:ziplanner/pages/calendar-page.dart';
 import 'package:ziplanner/pages/setting-page.dart';
+import 'package:ziplanner/pages/todo-page.dart';
 import 'package:ziplanner/zip-icons.dart';
+
 import '../styles.dart';
 import '../zip-icons.dart';
 
@@ -22,6 +23,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: backgroundColor,
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Color(0XFFFFFFFF),
@@ -40,12 +42,12 @@ class _HomeState extends State<Home> {
           children: [
             Text(
               'ToDo',
-              style: kappBarTitleStyle,
+              style: kAppBarTitleStyle,
             ),
             SizedBox(height: 2),
             Text(
               'Task & Events',
-              style: kappBarSubtitleStyle,
+              style: kAppBarSubtitleStyle,
             ),
           ],
         ),
@@ -67,7 +69,7 @@ class _HomeState extends State<Home> {
       bottomNavigationBar: BottomNavigationBar(
         elevation: 20,
         selectedItemColor: Color(0XFFD97D54),
-        unselectedItemColor: Color(0xFFCCCCCC),
+        unselectedItemColor: Color(0xFF324755),
         currentIndex: _currentIndex,
         iconSize: 35,
         selectedFontSize: 12,
