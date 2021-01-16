@@ -2,7 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ziplanner/pages/todo-add-page.dart';
+import 'package:ziplanner/pages/add-task-page.dart';
 
 import '../styles.dart';
 import '../zip-icons.dart';
@@ -22,9 +22,16 @@ class _TodoTextFieldState extends State<TodoTextField> {
       height: 60,
       decoration: BoxDecoration(
         borderRadius: new BorderRadius.circular(27),
-        boxShadow: [BoxShadow(color: Color(0xFFCCCCCC), blurRadius: 3.0, spreadRadius: 0.2, offset: Offset.fromDirection(90, 5))],
+        boxShadow: [
+          BoxShadow(
+              color: Color(0xFFCCCCCC),
+              blurRadius: 3.0,
+              spreadRadius: 0.2,
+              offset: Offset.fromDirection(90, 5))
+        ],
       ),
       child: TextField(
+        autofocus: false,
         controller: _controller,
         onChanged: (value) {
           setState(() {
@@ -45,7 +52,9 @@ class _TodoTextFieldState extends State<TodoTextField> {
                 color: hasText ? activeColor : inactiveColor,
                 size: 49,
               ),
-              onPressed: (_controller.text.isNotEmpty) ? () => Navigator.pushNamed(context, ToDoAdd.path) : null,
+              onPressed: (_controller.text.isNotEmpty)
+                  ? () => Navigator.pushNamed(context, AddTaskPage.path)
+                  : null,
             ),
           ),
           border: OutlineInputBorder(
