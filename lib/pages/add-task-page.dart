@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ziplanner/components/top-bar.dart';
-import 'package:ziplanner/styles.dart';
+import 'package:flutter/widgets.dart';
+import 'package:ziplanner/components/bottom-buttons.dart';
+import 'package:ziplanner/components/ziplanner-appbar.dart';
+
+import '../styles.dart';
 
 class AddTaskPage extends StatefulWidget {
   static const String path = '/addTask';
@@ -21,7 +24,41 @@ class _AddTaskPageState extends State<AddTaskPage> {
 
   @override
   Widget build(BuildContext context) {
-    return TopBar(
+    return Scaffold(
+      appBar: ZiplannerAppBar(
+        title: 'ToDo',
+        subtitle: 'Details',
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Expanded(
+              flex: 9,
+              child: Container(
+                color: backgroundColor,
+                child: Text('Details'),
+              )),
+          Expanded(
+            flex: 1,
+            child: SafeArea(
+              child: BottomButtons(
+                cancelOnPressed: () {
+                  print('cancel was tapped');
+                },
+                saveOnPressed: () {
+                  print('save was tapped');
+                },
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/*TopBar(
       title: 'ToDo',
       titleStyle: kAppBarTitleStyle,
       subtitle: 'Details',
@@ -102,6 +139,4 @@ class _AddTaskPageState extends State<AddTaskPage> {
                   ]),
             )),
       ),
-    );
-  }
-}
+    ); */
