@@ -19,15 +19,17 @@ class _TodoTextFieldState extends State<TodoTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60,
+      margin: EdgeInsets.only(left: 5),
+      height: 50,
       decoration: BoxDecoration(
         borderRadius: new BorderRadius.circular(27),
         boxShadow: [
           BoxShadow(
-              color: Color(0xFFCCCCCC),
-              blurRadius: 3.0,
-              spreadRadius: 0.2,
-              offset: Offset.fromDirection(90, 5))
+            color: Color(0xFFCCCCCC),
+            blurRadius: 3.0,
+            spreadRadius: 0.1,
+            offset: Offset.fromDirection(90, 4),
+          )
         ],
       ),
       child: TextField(
@@ -44,17 +46,15 @@ class _TodoTextFieldState extends State<TodoTextField> {
           hintText: 'I will...',
           hintStyle: kTodoTextFieldHintStyle,
           suffixIcon: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+            padding: const EdgeInsets.all(1),
             child: IconButton(
               padding: EdgeInsets.all(0),
               icon: Icon(
                 ZipIcons.add_circle,
                 color: hasText ? activeColor : inactiveColor,
-                size: 49,
+                size: 42,
               ),
-              onPressed: (_controller.text.isNotEmpty)
-                  ? () => Navigator.pushNamed(context, AddTaskPage.path)
-                  : null,
+              onPressed: (_controller.text.isNotEmpty) ? () => Navigator.pushNamed(context, AddTaskPage.path) : null,
             ),
           ),
           border: OutlineInputBorder(
@@ -65,7 +65,7 @@ class _TodoTextFieldState extends State<TodoTextField> {
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(28)),
-            borderSide: BorderSide(width: 2, color: activeColor),
+            borderSide: BorderSide(width: 1, color: activeColor),
           ),
         ),
       ),
