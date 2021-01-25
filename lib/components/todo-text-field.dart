@@ -2,7 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ziplanner/pages/add-task-page.dart';
+import 'package:ziplanner/pages/details.dart';
 
 import '../styles.dart';
 import '../zip-icons.dart';
@@ -54,7 +54,9 @@ class _TodoTextFieldState extends State<TodoTextField> {
                 color: hasText ? activeColor : inactiveColor,
                 size: 42,
               ),
-              onPressed: (_controller.text.isNotEmpty) ? () => Navigator.pushNamed(context, AddTaskPage.path) : null,
+              onPressed: (_controller.text.isNotEmpty)
+                  ? () => Navigator.pushNamed(context, DetailsPage.path)
+                  : null,
             ),
           ),
           border: OutlineInputBorder(

@@ -1,8 +1,8 @@
-class Task {
+class Todo {
   String name;
   bool isDone;
 
-  Task({this.name, this.isDone = false});
+  Todo({this.name, this.isDone = false});
 
   void toggleDone() {
     isDone = !isDone;

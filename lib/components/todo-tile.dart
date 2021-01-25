@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:ziplanner/zip-icons.dart';
 
-class TaskTile extends StatelessWidget {
+class TodoTile extends StatelessWidget {
   final String title;
   final bool isChecked;
   final Function checkIconCallback;
 
-  TaskTile({this.title, this.isChecked = false, this.checkIconCallback});
+  TodoTile({this.title, this.isChecked = false, this.checkIconCallback});
 
   @override
   Widget build(BuildContext context) {

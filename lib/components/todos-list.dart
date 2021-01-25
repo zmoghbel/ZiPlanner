@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ziplanner/components/task-tile.dart';
-import 'package:ziplanner/models/task-data.dart';
+import 'package:ziplanner/components/todo-tile.dart';
+import 'package:ziplanner/models/todo-data.dart';
 
-class TasksList extends StatelessWidget {
+class TodosList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -13,16 +13,16 @@ class TasksList extends StatelessWidget {
           ListView.builder(
             physics: NeverScrollableScrollPhysics(),
             itemBuilder: (BuildContext context, index) {
-              final task = TaskData().tasks[index];
-              return TaskTile(
+              final task = TodoData().tasks[index];
+              return TodoTile(
                 title: task.name,
                 isChecked: task.isDone,
                 checkIconCallback: () {
-                  TaskData().updateTask(task);
+                  TodoData().updateTodo(task);
                 },
               );
             },
-            itemCount: TaskData().taskCount,
+            itemCount: TodoData().todoCount,
             shrinkWrap: true,
           ),
         ],
