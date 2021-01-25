@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ziplanner/pages/home-page.dart';
-import 'package:ziplanner/pages/add-task-page.dart';
+import 'package:ziplanner/pages/details.dart';
 
 void main() {
   runApp(ZiplannerApp());
@@ -27,7 +27,7 @@ class ZiplannerApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => Home(),
-        AddTaskPage.path: (context) => AddTaskPage(),
+        DetailsPage.path: (context) => DetailsPage(),
       },
       localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
         DefaultMaterialLocalizations.delegate,

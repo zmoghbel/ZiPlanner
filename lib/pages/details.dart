@@ -2,17 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:ziplanner/components/bottom-buttons.dart';
+import 'package:ziplanner/components/header.dart';
 import 'package:ziplanner/components/ziplanner-appbar.dart';
+import 'package:ziplanner/zip-icons.dart';
 
 import '../styles.dart';
 
-class AddTaskPage extends StatefulWidget {
-  static const String path = '/addTask';
+class DetailsPage extends StatefulWidget {
+  static const String path = '/details';
   @override
-  _AddTaskPageState createState() => _AddTaskPageState();
+  _DetailsPageState createState() => _DetailsPageState();
 }
 
-class _AddTaskPageState extends State<AddTaskPage> {
+class _DetailsPageState extends State<DetailsPage> {
   final myController = TextEditingController();
   bool isSwitched = false;
 
@@ -37,7 +39,20 @@ class _AddTaskPageState extends State<AddTaskPage> {
               flex: 9,
               child: Container(
                 color: backgroundColor,
-                child: Text('Details'),
+                child: ListView(
+                  padding: EdgeInsets.symmetric(vertical: 25, horizontal: 15),
+                  children: [
+                    Header(ZipIcons.title, 'Title'),
+                    TextFormField(),
+                    Header(ZipIcons.tags, 'Tag'),
+                    Header(ZipIcons.clock, 'ToDo Time'),
+                    Row(
+                      children: [
+                        Header(ZipIcons.repeat, 'Repeat'),
+                      ],
+                    ),
+                  ],
+                ),
               )),
           Expanded(
             flex: 1,
