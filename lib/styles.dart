@@ -6,7 +6,7 @@ const Color activeColor = Color(0xFFD97D54);
 
 const backgroundColor = Color(0xFFF5F5F5);
 
-const TextStyle kDayTitleStyle = TextStyle(
+const TextStyle kTitleStyle = TextStyle(
   color: activeColor,
   fontFamily: 'Roboto',
   fontSize: 20.0,

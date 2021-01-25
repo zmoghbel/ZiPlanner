@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ziplanner/components/tasks-list.dart';
-import 'package:ziplanner/pages/add-task-page.dart';
+import 'package:ziplanner/components/todos-list.dart';
+import 'package:ziplanner/pages/details.dart';
 
 import '../styles.dart';
 import '../zip-icons.dart';
@@ -23,7 +23,7 @@ class _FilledDayListState extends State<FilledDayList> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(widget.title, style: kDayTitleStyle),
+              Text(widget.title, style: kTitleStyle),
               IconButton(
                 padding: EdgeInsets.all(0),
                 icon: Icon(
@@ -31,13 +31,13 @@ class _FilledDayListState extends State<FilledDayList> {
                   color: activeColor,
                   size: 50,
                 ),
-                onPressed: () => Navigator.pushNamed(context, AddTaskPage.path),
+                onPressed: () => Navigator.pushNamed(context, DetailsPage.path),
               )
             ],
           ),
         ),
         SizedBox(height: 15),
-        TasksList(),
+        TodosList(),
       ]),
     );
   }

@@ -15,7 +15,7 @@ class _EmptyDayListState extends State<EmptyDayList> {
     return Padding(
       padding: const EdgeInsets.only(top: 50.0),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text(widget.title, style: kDayTitleStyle),
+        Text(widget.title, style: kTitleStyle),
         SizedBox(height: 15),
         TodoTextField(),
       ]),
