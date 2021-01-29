@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
 import 'package:ziplanner/components/bottom-buttons.dart';
 import 'package:ziplanner/components/header.dart';
+import 'package:ziplanner/components/tags.dart';
 import 'package:ziplanner/components/ziplanner-appbar.dart';
 import 'package:ziplanner/zip-icons.dart';
 
@@ -40,59 +41,115 @@ class _DetailsPageState extends State<DetailsPage> {
         //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Expanded(
-              flex: 9,
-              child: Container(
-                color: backgroundColor,
-                child: ListView(
-                  padding: EdgeInsets.symmetric(vertical: 25, horizontal: 20),
-                  children: [
-                    Header(ZipIcons.title, 'Title'),
-                    TextFormField(
-                      decoration: InputDecoration(border: InputBorder.none, hintText: 'I will', hintStyle: kTodoTextFieldHintStyle),
+            flex: 9,
+            child: Container(
+              color: backgroundColor,
+              child: ListView(
+                padding: EdgeInsets.symmetric(vertical: 25, horizontal: 20),
+                children: [
+                  Header(ZipIcons.title, 'Title'),
+                  TextFormField(
+                    decoration: InputDecoration(border: InputBorder.none, hintText: 'I will', hintStyle: kTodoTextFieldHintStyle),
+                  ),
+                  Header(ZipIcons.tags, 'Tag'),
+                  Tags(),
+                  Header(ZipIcons.clock, 'ToDo Time'),
+                  Container(
+                    height: 300,
+                    child: CupertinoDatePicker(
+                      minimumDate: DateTime.now(),
+                      onDateTimeChanged: (DateTime dateTime) {
+                        print(dateTime.toString());
+                      },
                     ),
-                    Header(ZipIcons.tags, 'Tag'),
-                    Header(ZipIcons.clock, 'ToDo Time'),
-                    Header(
-                      ZipIcons.repeat,
-                      'Repeat',
-                      trailing: AdvancedSwitch(
-                        activeColor: activeColor,
-                        height: 20,
-                        width: 45,
-                        activeChild: Transform.scale(
-                          scale: 0.8,
-                          child: Icon(ZipIcons.repeat),
-                        ),
-                        value: _repeat,
-                        onChanged: (value) {
-                          setState(() {
-                            _repeat = value;
-                          });
-                        },
+                  ),
+                  Header(
+                    ZipIcons.repeat,
+                    'Repeat',
+                    trailing: AdvancedSwitch(
+                      activeColor: activeColor,
+                      height: 20,
+                      width: 45,
+                      activeChild: Transform.scale(
+                        scale: 0.8,
+                        child: Icon(ZipIcons.repeat),
                       ),
+                      value: _repeat,
+                      onChanged: (value) {
+                        setState(() {
+                          _repeat = value;
+                        });
+                      },
                     ),
-                    Header(
-                      ZipIcons.alert,
-                      'Remind me',
-                      trailing: AdvancedSwitch(
-                        activeColor: activeColor,
-                        height: 20,
-                        width: 45,
-                        activeChild: Transform.scale(
-                          scale: 0.8,
-                          child: Icon(ZipIcons.alert),
-                        ),
-                        value: _alert,
-                        onChanged: (value) {
-                          setState(() {
-                            _alert = value;
-                          });
-                        },
+                  ),
+                  Header(
+                    ZipIcons.alert,
+                    'Remind me',
+                    trailing: AdvancedSwitch(
+                      activeColor: activeColor,
+                      height: 20,
+                      width: 45,
+                      activeChild: Transform.scale(
+                        scale: 0.8,
+                        child: Icon(ZipIcons.alert),
                       ),
+                      value: _alert,
+                      onChanged: (value) {
+                        setState(() {
+                          _alert = value;
+                        });
+                      },
                     ),
-                  ],
-                ),
-              )),
+                  ),
+                  Header(
+                    ZipIcons.location,
+                    'Location',
+                    trailing: IconButton(
+                      padding: EdgeInsets.all(0),
+                      icon: Icon(
+                        ZipIcons.add,
+                        size: 40,
+                        color: activeColor,
+                      ),
+                      onPressed: () {
+                        print('Location was pressed');
+                      },
+                    ),
+                  ),
+                  Header(
+                    ZipIcons.notes,
+                    'Notes',
+                    trailing: IconButton(
+                      padding: EdgeInsets.all(0),
+                      icon: Icon(
+                        ZipIcons.add,
+                        size: 40,
+                        color: activeColor,
+                      ),
+                      onPressed: () {
+                        print('Notes was pressed');
+                      },
+                    ),
+                  ),
+                  Header(
+                    ZipIcons.attachment,
+                    'Attachments',
+                    trailing: IconButton(
+                      padding: EdgeInsets.all(0),
+                      icon: Icon(
+                        ZipIcons.add,
+                        size: 40,
+                        color: activeColor,
+                      ),
+                      onPressed: () {
+                        print('Location was pressed');
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
           Expanded(
             flex: 1,
             child: SafeArea(
