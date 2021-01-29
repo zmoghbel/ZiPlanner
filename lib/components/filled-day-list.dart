@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ziplanner/components/todos-list.dart';
-import 'package:ziplanner/pages/details.dart';
+import 'package:ziplanner/pages/details-page.dart';
+import 'package:ziplanner/zip-icons.dart';
 
 import '../styles.dart';
-import '../zip-icons.dart';
 
 class FilledDayList extends StatefulWidget {
   FilledDayList(this.title);
