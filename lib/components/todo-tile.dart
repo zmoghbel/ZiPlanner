@@ -25,8 +25,7 @@ class TodoTile extends StatelessWidget {
       title: Text(
         title,
         style: TextStyle(
-          decoration:
-              isChecked ? TextDecoration.lineThrough : TextDecoration.none,
+          decoration: isChecked ? TextDecoration.lineThrough : TextDecoration.none,
           fontSize: 20,
           color: Color(0XFF334856),
           fontFamily: 'Roboto',

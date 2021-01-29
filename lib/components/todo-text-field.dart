@@ -2,10 +2,10 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ziplanner/pages/details.dart';
+import 'package:ziplanner/pages/details-page.dart';
+import 'package:ziplanner/zip-icons.dart';
 
 import '../styles.dart';
-import '../zip-icons.dart';
 
 class TodoTextField extends StatefulWidget {
   @override
@@ -54,9 +54,7 @@ class _TodoTextFieldState extends State<TodoTextField> {
                 color: hasText ? activeColor : inactiveColor,
                 size: 42,
               ),
-              onPressed: (_controller.text.isNotEmpty)
-                  ? () => Navigator.pushNamed(context, DetailsPage.path)
-                  : null,
+              onPressed: (_controller.text.isNotEmpty) ? () => Navigator.pushNamed(context, DetailsPage.path) : null,
             ),
           ),
           border: OutlineInputBorder(

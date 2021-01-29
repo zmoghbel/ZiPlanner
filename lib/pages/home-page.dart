@@ -7,7 +7,6 @@ import 'package:ziplanner/pages/todo-page.dart';
 import 'package:ziplanner/zip-icons.dart';
 
 import '../styles.dart';
-import '../zip-icons.dart';
 
 class Home extends StatefulWidget {
   @override

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ziplanner/zip-icons.dart';
+
 import '../styles.dart';
-import '../zip-icons.dart';
 
 class ZiplannerAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double _prefferedHeight = 60.0;

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ziplanner/pages/details-page.dart';
 import 'package:ziplanner/pages/home-page.dart';
-import 'package:ziplanner/pages/details.dart';
 
 void main() {
   runApp(ZiplannerApp());

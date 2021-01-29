@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
 import 'package:ziplanner/components/bottom-buttons.dart';
 import 'package:ziplanner/components/header.dart';
 import 'package:ziplanner/components/ziplanner-appbar.dart';
@@ -10,6 +11,7 @@ import '../styles.dart';
 
 class DetailsPage extends StatefulWidget {
   static const String path = '/details';
+
   @override
   _DetailsPageState createState() => _DetailsPageState();
 }
@@ -17,6 +19,8 @@ class DetailsPage extends StatefulWidget {
 class _DetailsPageState extends State<DetailsPage> {
   final myController = TextEditingController();
   bool isSwitched = false;
+  bool _repeat = false;
+  bool _alert = false;
 
   @override
   void dispose() {
@@ -40,16 +44,51 @@ class _DetailsPageState extends State<DetailsPage> {
               child: Container(
                 color: backgroundColor,
                 child: ListView(
-                  padding: EdgeInsets.symmetric(vertical: 25, horizontal: 15),
+                  padding: EdgeInsets.symmetric(vertical: 25, horizontal: 20),
                   children: [
                     Header(ZipIcons.title, 'Title'),
-                    TextFormField(),
+                    TextFormField(
+                      decoration: InputDecoration(border: InputBorder.none, hintText: 'I will', hintStyle: kTodoTextFieldHintStyle),
+                    ),
                     Header(ZipIcons.tags, 'Tag'),
                     Header(ZipIcons.clock, 'ToDo Time'),
-                    Row(
-                      children: [
-                        Header(ZipIcons.repeat, 'Repeat'),
-                      ],
+                    Header(
+                      ZipIcons.repeat,
+                      'Repeat',
+                      trailing: AdvancedSwitch(
+                        activeColor: activeColor,
+                        height: 20,
+                        width: 45,
+                        activeChild: Transform.scale(
+                          scale: 0.8,
+                          child: Icon(ZipIcons.repeat),
+                        ),
+                        value: _repeat,
+                        onChanged: (value) {
+                          setState(() {
+                            _repeat = value;
+                          });
+                        },
+                      ),
+                    ),
+                    Header(
+                      ZipIcons.alert,
+                      'Remind me',
+                      trailing: AdvancedSwitch(
+                        activeColor: activeColor,
+                        height: 20,
+                        width: 45,
+                        activeChild: Transform.scale(
+                          scale: 0.8,
+                          child: Icon(ZipIcons.alert),
+                        ),
+                        value: _alert,
+                        onChanged: (value) {
+                          setState(() {
+                            _alert = value;
+                          });
+                        },
+                      ),
                     ),
                   ],
                 ),
