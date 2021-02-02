@@ -49,7 +49,10 @@ class _DetailsPageState extends State<DetailsPage> {
                 children: [
                   Header(ZipIcons.title, 'Title'),
                   TextFormField(
-                    decoration: InputDecoration(border: InputBorder.none, hintText: 'I will', hintStyle: kTodoTextFieldHintStyle),
+                    decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'I will',
+                        hintStyle: kTodoTextFieldHintStyle),
                   ),
                   Header(ZipIcons.tags, 'Tag'),
                   Tags(),
@@ -117,7 +120,7 @@ class _DetailsPageState extends State<DetailsPage> {
                     ),
                   ),
                   Header(
-                    ZipIcons.notes,
+                    ZipIcons.edit,
                     'Notes',
                     trailing: IconButton(
                       padding: EdgeInsets.all(0),

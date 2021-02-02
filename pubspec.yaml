@@ -23,14 +23,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-  flutter_advanced_switch: ^0.0.9+3
-
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
-  
+  flutter_advanced_switch: ^0.0.9+3
+  flutter_slidable: ^0.5.7
 
 dev_dependencies:
   flutter_test:
@@ -38,7 +33,6 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
 # The following section is specific to Flutter.
 flutter:
 
@@ -50,37 +44,28 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
-    
-   
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
-
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-     - family: Roboto
-       fonts:
-         - asset: assets/fonts/Roboto-Bold.ttf
-           weight: 700
-         - asset: assets/fonts/Roboto-Medium.ttf
-           weight: 500
-         - asset: assets/fonts/Roboto-Regular.ttf
-           style: normal
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Roboto-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Roboto-Regular.ttf
+          style: normal
 
-     - family: ZipIcons
-       fonts:
-         - asset: assets/fonts/Zip-icons.ttf
-
-           
-   
-      
-        
+    - family: ZipIcons
+      fonts:
+        - asset: assets/fonts/Zip-icons.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
