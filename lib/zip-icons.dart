@@ -21,27 +21,48 @@ class ZipIcons {
   static const _kFontFam = 'ZipIcons';
   static const _kFontPkg = null;
 
-  static const IconData add_circle = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData add = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData alert = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData attachment = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData calendar = IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData check_circle_done = IconData(0xe805, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData check_circle_empty = IconData(0xe806, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData clock = IconData(0xe807, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData delete = IconData(0xe808, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData edit = IconData(0xe809, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData hamburger_menu = IconData(0xe80a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData important = IconData(0xe80b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData location = IconData(0xe80c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData notes = IconData(0xe80d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData personal = IconData(0xe80e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData repeat = IconData(0xe80f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData search = IconData(0xe810, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData setting = IconData(0xe811, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData share = IconData(0xe812, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData tags = IconData(0xe813, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData title = IconData(0xe814, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData todo_list = IconData(0xe815, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData work = IconData(0xe816, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData share =
+      IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData edit =
+      IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData delete =
+      IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData add_circle =
+      IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData add =
+      IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData alert =
+      IconData(0xe805, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData attachment =
+      IconData(0xe806, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData calendar =
+      IconData(0xe807, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData check_circle_done =
+      IconData(0xe808, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData check_circle_empty =
+      IconData(0xe809, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData clock =
+      IconData(0xe80a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData hamburger_menu =
+      IconData(0xe80d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData important =
+      IconData(0xe80e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData location =
+      IconData(0xe80f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData personal =
+      IconData(0xe811, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData repeat =
+      IconData(0xe812, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData search =
+      IconData(0xe813, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData setting =
+      IconData(0xe814, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData tags =
+      IconData(0xe816, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData title =
+      IconData(0xe817, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData todo_list =
+      IconData(0xe818, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData work =
+      IconData(0xe819, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

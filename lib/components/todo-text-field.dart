@@ -54,7 +54,9 @@ class _TodoTextFieldState extends State<TodoTextField> {
                 color: hasText ? activeColor : inactiveColor,
                 size: 42,
               ),
-              onPressed: (_controller.text.isNotEmpty) ? () => Navigator.pushNamed(context, DetailsPage.path) : null,
+              onPressed: (_controller.text.isNotEmpty)
+                  ? () => Navigator.pushNamed(context, DetailsPage.path)
+                  : null,
             ),
           ),
           border: OutlineInputBorder(
