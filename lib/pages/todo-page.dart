@@ -21,13 +21,13 @@ class ToDoPage extends StatelessWidget {
                   children: [
                     todoData.todayTodos.isEmpty
                         ? EmptyDayList('Today')
-                        : FilledDayList('Today', TodoData().todayTodos),
+                        : FilledDayList('Today', todoData.todayTodos),
                     todoData.tommorrowTodos.isEmpty
                         ? EmptyDayList('Tomorrow')
-                        : FilledDayList('Tomorrow', TodoData().tommorrowTodos),
+                        : FilledDayList('Tomorrow', todoData.tommorrowTodos),
                     todoData.futureTodos.isEmpty
                         ? EmptyDayList('In The Future')
-                        : FilledDayList('In The Future', TodoData().futureTodos)
+                        : FilledDayList('In The Future', todoData.futureTodos)
                   ],
                 );
               },

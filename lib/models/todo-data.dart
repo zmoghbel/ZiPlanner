@@ -5,17 +5,25 @@ import 'package:ziplanner/models/todo.dart';
 final now = DateTime.now();
 
 class TodoData extends ChangeNotifier {
+  static final TodoData _todoData = TodoData._internal();
+
+  factory TodoData() {
+    return _todoData;
+  }
+
+  TodoData._internal();
+
   List<Todo> todayTodos = [
-    // Todo(
-    //   name: 'Go shopping',
-    //   isDone: true,
-    //   time: DateTime(now.year, now.month, now.day),
-    // ),
-    // Todo(
-    //   name: 'Go shopping',
-    //   isDone: true,
-    //   time: DateTime(now.year, now.month, now.day),
-    // ),
+    Todo(
+      name: 'Go shopping',
+      isDone: true,
+      time: DateTime(now.year, now.month, now.day),
+    ),
+    Todo(
+      name: 'Buy a house',
+      isDone: false,
+      time: DateTime(now.year, now.month, now.day),
+    ),
   ];
 
   // UnmodifiableListView<Todo> get todayTodos {
