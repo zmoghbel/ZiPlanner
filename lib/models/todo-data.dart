@@ -6,18 +6,20 @@ final now = DateTime.now();
 
 class TodoData extends ChangeNotifier {
   List<Todo> todayTodos = [
-    Todo(
-      name: 'Buy milk',
-      time: DateTime(now.year, now.month, now.day),
-    ),
-    Todo(
-      name: 'Go shopping',
-      isDone: true,
-      time: DateTime(now.year, now.month, now.day),
-    ),
+    // Todo(
+    //   name: 'Go shopping',
+    //   isDone: true,
+    //   time: DateTime(now.year, now.month, now.day),
+    // ),
+    // Todo(
+    //   name: 'Go shopping',
+    //   isDone: true,
+    //   time: DateTime(now.year, now.month, now.day),
+    // ),
   ];
 
   // UnmodifiableListView<Todo> get todayTodos {
+  //   notifyListeners();
   //   return UnmodifiableListView(_todayTodos);
   // }
 
@@ -27,21 +29,20 @@ class TodoData extends ChangeNotifier {
       time: DateTime(now.year, now.month, now.day + 1),
     ),
     Todo(
-      name: 'Go shopping',
-      isDone: true,
+      name: 'Call Dad',
       time: DateTime(now.year, now.month, now.day + 1),
     ),
   ];
 
   List<Todo> futureTodos = [
-    Todo(
-      name: 'Ikea shopping',
-    ),
-    Todo(
-      name: 'Reading a book',
-      isDone: true,
-    ),
-    Todo(name: 'programming', isDone: false),
+    // Todo(
+    //   name: 'Ikea shopping',
+    // ),
+    // Todo(
+    //   name: 'Reading a book',
+    //   isDone: true,
+    // ),
+    // Todo(name: 'programming', isDone: false),
   ];
 
   // int get todayCount {

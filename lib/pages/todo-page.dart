@@ -1,16 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:ziplanner/components/empty-day-list.dart';
 import 'package:ziplanner/components/filled-day-list.dart';
+import 'package:ziplanner/models/todo-data.dart';
 
-class ToDoPage extends StatefulWidget {
-  //const ToDoPage({Key key,}) : super(key: key);
-
-  @override
-  _ToDoPageState createState() => _ToDoPageState();
-}
-
-class _ToDoPageState extends State<ToDoPage> {
+class ToDoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -20,13 +15,22 @@ class _ToDoPageState extends State<ToDoPage> {
           flex: 8,
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 24),
-            child: ListView(
-              // crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                EmptyDayList('Today'),
-                EmptyDayList('Tomorrow'),
-                FilledDayList('In The Future'),
-              ],
+            child: Consumer<TodoData>(
+              builder: (BuildContext context, TodoData todoData, Widget child) {
+                return ListView(
+                  children: [
+                    todoData.todayTodos.isEmpty
+                        ? EmptyDayList('Today')
+                        : FilledDayList('Today', TodoData().todayTodos),
+                    todoData.tommorrowTodos.isEmpty
+                        ? EmptyDayList('Tomorrow')
+                        : FilledDayList('Tomorrow', TodoData().tommorrowTodos),
+                    todoData.futureTodos.isEmpty
+                        ? EmptyDayList('In The Future')
+                        : FilledDayList('In The Future', TodoData().futureTodos)
+                  ],
+                );
+              },
             ),
           ),
         ),
