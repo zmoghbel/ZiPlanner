@@ -9,7 +9,7 @@ class TodoData extends ChangeNotifier {
     Todo(name: 'programming', isDone: true),
   ];
 
-  UnmodifiableListView<Todo> get tasks {
+  UnmodifiableListView<Todo> get todos {
     return UnmodifiableListView(_todos);
   }
 
