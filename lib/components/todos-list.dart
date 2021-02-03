@@ -1,32 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:ziplanner/components/todo-tile.dart';
 import 'package:ziplanner/models/todo-data.dart';
+import 'package:ziplanner/models/todo.dart';
 
 class TodosList extends StatelessWidget {
+  final List<Todo> todos;
+  TodosList(this.todos);
+
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      physics: AlwaysScrollableScrollPhysics(),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          ListView.builder(
-            physics: NeverScrollableScrollPhysics(),
-            itemBuilder: (BuildContext context, index) {
-              final task = TodoData().tasks[index];
-              return TodoTile(
-                title: task.name,
-                isChecked: task.isDone,
-                checkIconCallback: () {
-                  TodoData().updateTodo(task);
-                },
-              );
+    return Column(
+      //mainAxisSize: MainAxisSize.min,
+      children: todos.map<Widget>(
+        (todo) {
+          return TodoTile(
+            title: todo.name,
+            isChecked: todo.isDone,
+            checkIconCallback: () {
+              TodoData().updateTodo(todo);
             },
-            itemCount: TodoData().todoCount,
-            shrinkWrap: true,
-          ),
-        ],
-      ),
+          );
+        },
+      ).toList(),
+
+      // [
+      //   ListView.builder(
+      //     physics: NeverScrollableScrollPhysics(),
+      //     itemBuilder: (BuildContext context, index) {
+      //       final task = todos[index];
+      //       return
+      //     },
+      //     itemCount: todos.length,
+      //     shrinkWrap: true,
+      //   ),
+      // ],
     );
   }
 }
