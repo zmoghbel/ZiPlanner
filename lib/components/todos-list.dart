@@ -10,7 +10,7 @@ class TodosList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      //mainAxisSize: MainAxisSize.min,
+      mainAxisSize: MainAxisSize.min,
       children: todos.map<Widget>(
         (todo) {
           return TodoTile(
@@ -22,18 +22,6 @@ class TodosList extends StatelessWidget {
           );
         },
       ).toList(),
-
-      // [
-      //   ListView.builder(
-      //     physics: NeverScrollableScrollPhysics(),
-      //     itemBuilder: (BuildContext context, index) {
-      //       final task = todos[index];
-      //       return
-      //     },
-      //     itemCount: todos.length,
-      //     shrinkWrap: true,
-      //   ),
-      // ],
     );
   }
 }
