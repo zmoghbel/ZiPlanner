@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:ziplanner/zip-icons.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:ziplanner/zip-icons.dart';
 
 class TodoTile extends StatelessWidget {
   final String title;
@@ -11,12 +11,7 @@ class TodoTile extends StatelessWidget {
   final Function deleteCallback;
   final Function editCallback;
 
-  TodoTile(
-      {this.title,
-      this.isChecked = false,
-      this.checkIconCallback,
-      this.deleteCallback,
-      this.editCallback});
+  TodoTile({this.title, this.isChecked = false, this.checkIconCallback, this.deleteCallback, this.editCallback});
 
   @override
   Widget build(BuildContext context) {
@@ -49,21 +44,22 @@ class TodoTile extends StatelessWidget {
       //key: Key(title),
       child: ListTile(
         contentPadding: EdgeInsets.all(0),
-        minLeadingWidth: 5,
-        leading: GestureDetector(
-          child: Icon(
-            isChecked
-                ? ZipIcons.check_circle_done
-                : ZipIcons.check_circle_empty,
-            size: 17,
+        minLeadingWidth: 3,
+        leading: SizedBox(
+          width: 20,
+          child: IconButton(
+            padding: EdgeInsets.all(0),
+            icon: Icon(
+              isChecked ? ZipIcons.check_circle_done : ZipIcons.check_circle_empty,
+              size: 20,
+            ),
+            onPressed: checkIconCallback,
           ),
-          onTap: checkIconCallback,
         ),
         title: Text(
           title,
           style: TextStyle(
-            decoration:
-                isChecked ? TextDecoration.lineThrough : TextDecoration.none,
+            decoration: isChecked ? TextDecoration.lineThrough : TextDecoration.none,
             fontSize: 20,
             color: Color(0XFF334856),
             fontFamily: 'Roboto',
