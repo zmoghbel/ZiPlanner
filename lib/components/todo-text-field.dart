@@ -19,7 +19,6 @@ class _TodoTextFieldState extends State<TodoTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 5),
       height: 50,
       decoration: BoxDecoration(
         borderRadius: new BorderRadius.circular(27),
@@ -54,9 +53,7 @@ class _TodoTextFieldState extends State<TodoTextField> {
                 color: hasText ? activeColor : inactiveColor,
                 size: 42,
               ),
-              onPressed: (_controller.text.isNotEmpty)
-                  ? () => Navigator.pushNamed(context, DetailsPage.path)
-                  : null,
+              onPressed: (_controller.text.isNotEmpty) ? () => Navigator.pushNamed(context, DetailsPage.path) : null,
             ),
           ),
           border: OutlineInputBorder(
