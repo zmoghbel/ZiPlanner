@@ -13,28 +13,24 @@ class FilledDayList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 50.0),
+      padding: const EdgeInsets.only(top: 50.0, left: 20, right: 20, bottom: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: EdgeInsets.only(right: 15),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(title, style: kTitleStyle),
-                IconButton(
-                  padding: EdgeInsets.all(0),
-                  icon: Icon(
-                    ZipIcons.add,
-                    color: activeColor,
-                    size: 50,
-                  ),
-                  onPressed: () =>
-                      Navigator.pushNamed(context, DetailsPage.path),
-                )
-              ],
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(title, style: kTitleStyle),
+              IconButton(
+                padding: EdgeInsets.all(0),
+                icon: Icon(
+                  ZipIcons.add,
+                  color: activeColor,
+                  size: 50,
+                ),
+                onPressed: () => Navigator.pushNamed(context, DetailsPage.path),
+              )
+            ],
           ),
           SizedBox(height: 15),
           TodosList(todos),

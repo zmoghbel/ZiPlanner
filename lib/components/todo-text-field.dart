@@ -18,53 +18,58 @@ class _TodoTextFieldState extends State<TodoTextField> {
   TextEditingController _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 50,
-      decoration: BoxDecoration(
-        borderRadius: new BorderRadius.circular(27),
-        boxShadow: [
-          BoxShadow(
-            color: Color(0xFFCCCCCC),
-            blurRadius: 3.0,
-            spreadRadius: 0.1,
-            offset: Offset.fromDirection(90, 4),
-          )
-        ],
-      ),
-      child: TextField(
-        autofocus: false,
-        controller: _controller,
-        onChanged: (value) {
-          setState(() {
-            hasText = value.isNotEmpty ? true : false;
-          });
-        },
-        decoration: InputDecoration(
-          fillColor: Color(0xFFFFFFFF),
-          filled: true,
-          hintText: 'I will...',
-          hintStyle: kTodoTextFieldHintStyle,
-          suffixIcon: Padding(
-            padding: const EdgeInsets.all(1),
-            child: IconButton(
-              padding: EdgeInsets.all(0),
-              icon: Icon(
-                ZipIcons.add_circle,
-                color: hasText ? activeColor : inactiveColor,
-                size: 42,
+    return Padding(
+      padding: EdgeInsets.only(bottom: 10),
+      child: Container(
+        height: 50,
+        decoration: BoxDecoration(
+          borderRadius: new BorderRadius.circular(27),
+          boxShadow: [
+            BoxShadow(
+              color: Color(0xFFCCCCCC),
+              blurRadius: 3.0,
+              spreadRadius: 0.1,
+              offset: Offset.fromDirection(90, 4),
+            )
+          ],
+        ),
+        child: TextField(
+          autofocus: false,
+          controller: _controller,
+          onChanged: (value) {
+            setState(() {
+              hasText = value.isNotEmpty ? true : false;
+            });
+          },
+          decoration: InputDecoration(
+            fillColor: Color(0xFFFFFFFF),
+            filled: true,
+            hintText: 'I will...',
+            hintStyle: kTodoTextFieldHintStyle,
+            suffixIcon: Padding(
+              padding: const EdgeInsets.all(1),
+              child: IconButton(
+                padding: EdgeInsets.all(0),
+                icon: Icon(
+                  ZipIcons.add_circle,
+                  color: hasText ? activeColor : inactiveColor,
+                  size: 42,
+                ),
+                onPressed: (_controller.text.isNotEmpty)
+                    ? () => Navigator.pushNamed(context, DetailsPage.path)
+                    : null,
               ),
-              onPressed: (_controller.text.isNotEmpty) ? () => Navigator.pushNamed(context, DetailsPage.path) : null,
             ),
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(27),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(27),
+              ),
+              borderSide: BorderSide.none,
             ),
-            borderSide: BorderSide.none,
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(28)),
-            borderSide: BorderSide(width: 1, color: activeColor),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(28)),
+              borderSide: BorderSide(width: 1, color: activeColor),
+            ),
           ),
         ),
       ),
