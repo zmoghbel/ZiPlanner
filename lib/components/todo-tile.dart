@@ -8,8 +8,15 @@ class TodoTile extends StatelessWidget {
   final String title;
   final bool isChecked;
   final Function checkIconCallback;
+  final Function deleteCallback;
+  final Function editCallback;
 
-  TodoTile({this.title, this.isChecked = false, this.checkIconCallback});
+  TodoTile(
+      {this.title,
+      this.isChecked = false,
+      this.checkIconCallback,
+      this.deleteCallback,
+      this.editCallback});
 
   @override
   Widget build(BuildContext context) {
@@ -17,20 +24,18 @@ class TodoTile extends StatelessWidget {
       actionPane: SlidableDrawerActionPane(),
       secondaryActions: [
         IconSlideAction(
-          closeOnTap: false,
           icon: ZipIcons.delete,
           color: Color(0xFFFA5959),
           foregroundColor: Colors.white,
           caption: 'Delete',
-          onTap: () {},
+          onTap: deleteCallback,
         ),
         IconSlideAction(
-          closeOnTap: false,
           icon: ZipIcons.edit,
           color: Color(0xFF29CCB1),
           foregroundColor: Colors.white,
           caption: 'Edit',
-          onTap: () {},
+          onTap: editCallback,
         ),
         IconSlideAction(
           closeOnTap: false,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ziplanner/components/todo-tile.dart';
 import 'package:ziplanner/models/todo-data.dart';
 import 'package:ziplanner/models/todo.dart';
+import 'package:ziplanner/pages/details-page.dart';
 
 class TodosList extends StatelessWidget {
   final List<Todo> todos;
@@ -19,6 +20,10 @@ class TodosList extends StatelessWidget {
             checkIconCallback: () {
               TodoData().updateTodo(todo);
             },
+            deleteCallback: () {
+              TodoData().removeTodo(todo, todos);
+            },
+            editCallback: () => Navigator.pushNamed(context, DetailsPage.path),
           );
         },
       ).toList(),
