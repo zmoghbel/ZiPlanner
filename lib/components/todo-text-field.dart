@@ -10,7 +10,8 @@ import '../styles.dart';
 
 class TodoTextField extends StatefulWidget {
   final List<Todo> todos;
-  TodoTextField({this.todos});
+  final Function addCallback;
+  TodoTextField({this.todos, this.addCallback});
 
   @override
   _TodoTextFieldState createState() => _TodoTextFieldState();
@@ -63,7 +64,8 @@ class _TodoTextFieldState extends State<TodoTextField> {
                     ? null
                     : () {
                         TodoData().addTodo(_controller.text, widget.todos);
-                        //_controller.clear();
+                        _controller.clear();
+                        widget.addCallback();
                       },
               ),
             ),

@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:ziplanner/components/todo-text-field.dart';
 import 'package:ziplanner/components/todos-list.dart';
 import 'package:ziplanner/models/todo.dart';
-import 'package:ziplanner/pages/details-page.dart';
 import 'package:ziplanner/zip-icons.dart';
 
 import '../styles.dart';
 
-class FilledDayList extends StatelessWidget {
-  FilledDayList(this.dayTitle, this.todos);
+class FilledDayList extends StatefulWidget {
   final String dayTitle;
   final List<Todo> todos;
+
+  FilledDayList(this.dayTitle, this.todos);
+
+  @override
+  _FilledDayListState createState() => _FilledDayListState();
+}
+
+class _FilledDayListState extends State<FilledDayList> {
+  bool showTextField = false;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,20 +30,36 @@ class FilledDayList extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(dayTitle, style: kTitleStyle),
-              IconButton(
-                padding: EdgeInsets.all(0),
-                icon: Icon(
-                  ZipIcons.add,
-                  color: activeColor,
-                  size: 50,
-                ),
-                onPressed: () => Navigator.pushNamed(context, DetailsPage.path),
-              )
+              Text(widget.dayTitle, style: kTitleStyle),
+              showTextField
+                  ? SizedBox()
+                  : IconButton(
+                      padding: EdgeInsets.all(0),
+                      icon: Icon(
+                        ZipIcons.add,
+                        color: activeColor,
+                        size: 50,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          showTextField = true;
+                        });
+                      },
+                    )
             ],
           ),
           SizedBox(height: 15),
-          TodosList(todos),
+          showTextField
+              ? TodoTextField(
+                  todos: widget.todos,
+                  addCallback: () {
+                    setState(() {
+                      showTextField = false;
+                    });
+                  },
+                )
+              : SizedBox(height: 0),
+          TodosList(widget.todos),
         ],
       ),
     );
