@@ -12,9 +12,13 @@ class FilledDayListWithTF extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        EmptyDayList(title),
+        EmptyDayList(
+          title,
+          todos,
+        ),
         Padding(
-          padding: const EdgeInsets.only(top: 0, bottom: 10, right: 20, left: 20),
+          padding:
+              const EdgeInsets.only(top: 0, bottom: 10, right: 20, left: 20),
           child: TodosList(todos),
         ),
       ],

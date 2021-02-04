@@ -2,12 +2,16 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ziplanner/pages/details-page.dart';
+import 'package:ziplanner/models/todo-data.dart';
+import 'package:ziplanner/models/todo.dart';
 import 'package:ziplanner/zip-icons.dart';
 
 import '../styles.dart';
 
 class TodoTextField extends StatefulWidget {
+  final List<Todo> todos;
+  TodoTextField({this.todos});
+
   @override
   _TodoTextFieldState createState() => _TodoTextFieldState();
 }
@@ -38,7 +42,7 @@ class _TodoTextFieldState extends State<TodoTextField> {
           controller: _controller,
           onChanged: (value) {
             setState(() {
-              hasText = value.isNotEmpty ? true : false;
+              hasText = value.isEmpty ? false : true;
             });
           },
           decoration: InputDecoration(
@@ -55,9 +59,12 @@ class _TodoTextFieldState extends State<TodoTextField> {
                   color: hasText ? activeColor : inactiveColor,
                   size: 42,
                 ),
-                onPressed: (_controller.text.isNotEmpty)
-                    ? () => Navigator.pushNamed(context, DetailsPage.path)
-                    : null,
+                onPressed: (_controller.text.isEmpty)
+                    ? null
+                    : () {
+                        TodoData().addTodo(_controller.text, widget.todos);
+                        //_controller.clear();
+                      },
               ),
             ),
             border: OutlineInputBorder(

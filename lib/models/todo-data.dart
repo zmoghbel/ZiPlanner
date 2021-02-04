@@ -14,16 +14,16 @@ class TodoData extends ChangeNotifier {
   TodoData._internal();
 
   List<Todo> todayTodos = [
-    Todo(
-      name: 'Go shopping',
-      isDone: true,
-      time: DateTime(now.year, now.month, now.day),
-    ),
-    Todo(
-      name: 'Buy a house',
-      isDone: false,
-      time: DateTime(now.year, now.month, now.day),
-    ),
+    // Todo(
+    //   name: 'Go shopping',
+    //   isDone: true,
+    //   time: DateTime(now.year, now.month, now.day),
+    // ),
+    // Todo(
+    //   name: 'Buy a house',
+    //   isDone: false,
+    //   time: DateTime(now.year, now.month, now.day),
+    // ),
   ];
 
   // UnmodifiableListView<Todo> get todayTodos {
@@ -32,14 +32,10 @@ class TodoData extends ChangeNotifier {
   // }
 
   List<Todo> tommorrowTodos = [
-    Todo(
-      name: 'Call Mom',
-      time: DateTime(now.year, now.month, now.day + 1),
-    ),
-    Todo(
-      name: 'Call Dad',
-      time: DateTime(now.year, now.month, now.day + 1),
-    ),
+    // Todo(
+    //   name: 'Call Mom',
+    //   time: DateTime(now.year, now.month, now.day + 1),
+    // ),
   ];
 
   List<Todo> futureTodos = [
@@ -63,7 +59,7 @@ class TodoData extends ChangeNotifier {
   }
 
   void addTodo(String newTodoTitle, List<Todo> todoList) {
-    todayTodos.add(Todo(name: newTodoTitle));
+    todoList.add(Todo(name: newTodoTitle));
     notifyListeners();
   }
 

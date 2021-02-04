@@ -13,25 +13,20 @@ class ToDoPage extends StatelessWidget {
       children: [
         Expanded(
           flex: 8,
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 24),
-            child: Consumer<TodoData>(
-              builder: (BuildContext context, TodoData todoData, Widget child) {
-                return ListView(
-                  children: [
-                    todoData.todayTodos.isEmpty
-                        ? EmptyDayList('Today')
-                        : FilledDayList('Today', todoData.todayTodos),
-                    todoData.tommorrowTodos.isEmpty
-                        ? EmptyDayList('Tomorrow')
-                        : FilledDayList('Tomorrow', todoData.tommorrowTodos),
-                    todoData.futureTodos.isEmpty
-                        ? EmptyDayList('In The Future')
-                        : FilledDayList('In The Future', todoData.futureTodos)
-                  ],
-                );
-              },
-            ),
+          child: Consumer<TodoData>(
+            builder: (BuildContext context, TodoData todoData, Widget child) {
+              return ListView(children: [
+                todoData.todayTodos.isEmpty
+                    ? EmptyDayList('Today', todoData.todayTodos)
+                    : FilledDayList('Today', todoData.todayTodos),
+                todoData.tommorrowTodos.isEmpty
+                    ? EmptyDayList('Tomorrow', todoData.tommorrowTodos)
+                    : FilledDayList('Tomorrow', todoData.tommorrowTodos),
+                todoData.futureTodos.isEmpty
+                    ? EmptyDayList('In The Future', todoData.futureTodos)
+                    : FilledDayList('In The Future', todoData.futureTodos),
+              ]);
+            },
           ),
         ),
       ],
