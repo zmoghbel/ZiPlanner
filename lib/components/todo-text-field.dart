@@ -21,6 +21,15 @@ class _TodoTextFieldState extends State<TodoTextField> {
   bool hasText = false;
 
   TextEditingController _controller = TextEditingController();
+
+  void submitTodo() {
+    if (_controller.text.isNotEmpty) {
+      TodoData().addTodo(_controller.text, widget.todos);
+      _controller.clear();
+      widget.addCallback();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -41,6 +50,10 @@ class _TodoTextFieldState extends State<TodoTextField> {
         child: TextField(
           autofocus: false,
           controller: _controller,
+          textInputAction: TextInputAction.done,
+          onSubmitted: (todo) {
+            submitTodo();
+          },
           onChanged: (value) {
             setState(() {
               hasText = value.isEmpty ? false : true;
@@ -60,13 +73,7 @@ class _TodoTextFieldState extends State<TodoTextField> {
                   color: hasText ? activeColor : inactiveColor,
                   size: 42,
                 ),
-                onPressed: (_controller.text.isEmpty)
-                    ? null
-                    : () {
-                        TodoData().addTodo(_controller.text, widget.todos);
-                        _controller.clear();
-                        widget.addCallback();
-                      },
+                onPressed: submitTodo,
               ),
             ),
             border: OutlineInputBorder(
