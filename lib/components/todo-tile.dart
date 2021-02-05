@@ -10,12 +10,19 @@ class TodoTile extends StatelessWidget {
   final Function checkIconCallback;
   final Function deleteCallback;
   final Function editCallback;
+  final SlidableController slidableController;
 
-  TodoTile({this.title, this.isChecked = false, this.checkIconCallback, this.deleteCallback, this.editCallback});
-
+  TodoTile(
+      {this.title,
+      this.isChecked = false,
+      this.checkIconCallback,
+      this.deleteCallback,
+      this.editCallback,
+      this.slidableController});
   @override
   Widget build(BuildContext context) {
     return Slidable(
+      controller: slidableController,
       actionPane: SlidableDrawerActionPane(),
       secondaryActions: [
         IconSlideAction(
@@ -50,7 +57,9 @@ class TodoTile extends StatelessWidget {
           child: IconButton(
             padding: EdgeInsets.all(0),
             icon: Icon(
-              isChecked ? ZipIcons.check_circle_done : ZipIcons.check_circle_empty,
+              isChecked
+                  ? ZipIcons.check_circle_done
+                  : ZipIcons.check_circle_empty,
               size: 20,
             ),
             onPressed: checkIconCallback,
@@ -59,7 +68,8 @@ class TodoTile extends StatelessWidget {
         title: Text(
           title,
           style: TextStyle(
-            decoration: isChecked ? TextDecoration.lineThrough : TextDecoration.none,
+            decoration:
+                isChecked ? TextDecoration.lineThrough : TextDecoration.none,
             fontSize: 20,
             color: Color(0XFF334856),
             fontFamily: 'Roboto',
