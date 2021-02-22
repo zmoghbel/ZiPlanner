@@ -10,8 +10,8 @@ import '../styles.dart';
 
 class TodoTextField extends StatefulWidget {
   final List<Todo> todos;
-  final Function addCallback;
-  TodoTextField({this.todos, this.addCallback});
+  final Function hideTextField;
+  TodoTextField({this.todos, this.hideTextField});
 
   @override
   _TodoTextFieldState createState() => _TodoTextFieldState();
@@ -22,13 +22,13 @@ class _TodoTextFieldState extends State<TodoTextField> {
 
   TextEditingController _controller = TextEditingController();
 
-  void submitTodo() {
-    if (_controller.text.isNotEmpty) {
-      TodoData().addTodo(_controller.text, widget.todos);
-      _controller.clear();
-      widget.addCallback();
-    }
-  }
+  // void submitTodo(todo) {
+  //   if (todo.isNotEmpty) {
+  //     TodoData().addTodo(todo, widget.todos);
+  //     _controller.clear();
+  //     widget.hideTextField();
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -51,9 +51,7 @@ class _TodoTextFieldState extends State<TodoTextField> {
           autofocus: false,
           controller: _controller,
           textInputAction: TextInputAction.done,
-          onSubmitted: (todo) {
-            submitTodo();
-          },
+          //onSubmitted: (todoText) {submitTodo(todoText);},
           onChanged: (value) {
             setState(() {
               hasText = value.isEmpty ? false : true;
@@ -73,7 +71,13 @@ class _TodoTextFieldState extends State<TodoTextField> {
                   color: hasText ? activeColor : inactiveColor,
                   size: 42,
                 ),
-                onPressed: submitTodo,
+                onPressed: () {
+                  if (hasText) {
+                    TodoData().addTodo(_controller.text, widget.todos);
+                    _controller.clear();
+                    // widget.hideTextField();
+                  }
+                },
               ),
             ),
             border: OutlineInputBorder(

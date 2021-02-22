@@ -22,43 +22,52 @@ class _HomeState extends State<Home> {
   ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: backgroundColor,
-      appBar: ZiplannerAppBar(
-        title: 'ToDo',
-        subtitle: 'Tasks & Events',
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: <Color>[backgroundColor, Colors.white],
+        ),
       ),
-      body: tabs[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        elevation: 20,
-        selectedItemColor: Color(0XFFD97D54),
-        unselectedItemColor: Color(0xFF324755),
-        currentIndex: _currentIndex,
-        iconSize: 35,
-        selectedFontSize: 12,
-        unselectedFontSize: 12,
-        type: BottomNavigationBarType.fixed,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(
-              ZipIcons.todo_list,
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: ZiplannerAppBar(
+          title: 'ToDo',
+          subtitle: 'Tasks & Events',
+        ),
+        body: tabs[_currentIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          elevation: 15,
+          selectedItemColor: Color(0XFFD97D54),
+          unselectedItemColor: Color(0xFF324755),
+          currentIndex: _currentIndex,
+          iconSize: 35,
+          selectedFontSize: 12,
+          unselectedFontSize: 12,
+          type: BottomNavigationBarType.fixed,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(
+                ZipIcons.todo_list,
+              ),
+              label: 'To do list',
             ),
-            label: 'To do list',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(ZipIcons.calendar),
-            label: 'Calendar',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(ZipIcons.setting),
-            label: 'Settings',
-          ),
-        ],
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
+            BottomNavigationBarItem(
+              icon: Icon(ZipIcons.calendar),
+              label: 'Calendar',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(ZipIcons.setting),
+              label: 'Settings',
+            ),
+          ],
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+        ),
       ),
     );
   }
