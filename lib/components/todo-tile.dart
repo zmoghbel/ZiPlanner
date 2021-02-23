@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:ziplanner/components/todo-label.dart';
 import 'package:ziplanner/zip-icons.dart';
@@ -12,6 +13,8 @@ class TodoTile extends StatelessWidget {
   final Function deleteCallback;
   final Function editCallback;
   final SlidableController slidableController;
+  final bool alarmOn;
+  final Function toggleAlarmCallback;
 
   TodoTile(
       {this.title,
@@ -19,7 +22,9 @@ class TodoTile extends StatelessWidget {
       this.checkIconCallback,
       this.deleteCallback,
       this.editCallback,
-      this.slidableController});
+      this.slidableController,
+      this.alarmOn,
+      this.toggleAlarmCallback});
   @override
   Widget build(BuildContext context) {
     return Slidable(
@@ -79,6 +84,23 @@ class TodoTile extends StatelessWidget {
           ),
         ),
         subtitle: TodoLabels(),
+        trailing: alarmOn == null
+            ? SizedBox()
+            : AdvancedSwitch(
+                activeColor: Color(0XFF334856),
+                height: 20,
+                width: 45,
+                activeChild: Transform.scale(
+                  scale: 0.8,
+                  child: Icon(ZipIcons.alert),
+                ),
+                inactiveChild: Transform.scale(
+                  scale: 0.8,
+                  child: Icon(ZipIcons.alert),
+                ),
+                value: alarmOn,
+                onChanged: toggleAlarmCallback,
+              ),
       ),
     );
   }

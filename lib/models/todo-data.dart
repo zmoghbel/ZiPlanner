@@ -24,6 +24,12 @@ class TodoData extends ChangeNotifier {
       isDone: false,
       time: DateTime(now.year, now.month, now.day),
     ),
+    Todo(
+      name: 'Visit the dentist',
+      isDone: false,
+      time: DateTime(now.year, now.month, now.day),
+      alarmOn: true,
+    ),
   ];
 
   // UnmodifiableListView<Todo> get todayTodos {
@@ -32,10 +38,16 @@ class TodoData extends ChangeNotifier {
   // }
 
   List<Todo> tommorrowTodos = [
-    // Todo(
-    //   name: 'Call Mom',
-    //   time: DateTime(now.year, now.month, now.day + 1),
-    // ),
+    Todo(
+      name: 'Call Mom',
+      time: DateTime(now.year, now.month, now.day + 1),
+    ),
+    Todo(
+      name: 'Cal Dad',
+      isDone: false,
+      time: DateTime(now.year, now.month, now.day + 1),
+      alarmOn: false,
+    ),
   ];
 
   List<Todo> futureTodos = [
@@ -65,6 +77,11 @@ class TodoData extends ChangeNotifier {
 
   void removeTodo(Todo todo, List<Todo> todoList) {
     todoList.remove(todo);
+    notifyListeners();
+  }
+
+  void switchAlarm(Todo todo) {
+    todo.toggleAlarm();
     notifyListeners();
   }
 }

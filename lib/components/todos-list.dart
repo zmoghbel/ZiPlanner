@@ -28,6 +28,10 @@ class TodosList extends StatelessWidget {
               TodoData().removeTodo(todo, todos);
             },
             editCallback: () => Navigator.pushNamed(context, DetailsPage.path),
+            alarmOn: todo.alarmOn,
+            toggleAlarmCallback: (bool _) {
+              TodoData().switchAlarm(todo);
+            },
           );
         },
       ).toList(),
