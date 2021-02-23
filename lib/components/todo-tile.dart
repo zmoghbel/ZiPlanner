@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:ziplanner/components/todo-label.dart';
 import 'package:ziplanner/zip-icons.dart';
 
 class TodoTile extends StatelessWidget {
@@ -50,6 +51,7 @@ class TodoTile extends StatelessWidget {
       ],
       //key: Key(title),
       child: ListTile(
+        //isThreeLine: true,
         contentPadding: EdgeInsets.all(0),
         minLeadingWidth: 3,
         leading: SizedBox(
@@ -76,6 +78,7 @@ class TodoTile extends StatelessWidget {
             fontWeight: FontWeight.w500,
           ),
         ),
+        subtitle: TodoLabels(),
       ),
     );
   }
