@@ -9,7 +9,6 @@ import 'package:ziplanner/components/ziplanner-appbar.dart';
 import 'package:ziplanner/models/todo-data.dart';
 import 'package:ziplanner/models/todo.dart';
 import 'package:ziplanner/zip-icons.dart';
-
 import '../styles.dart';
 
 class DetailsPage extends StatefulWidget {
@@ -22,163 +21,173 @@ class DetailsPage extends StatefulWidget {
 }
 
 class _DetailsPageState extends State<DetailsPage> {
-  final myController = TextEditingController();
+  //final myController = TextEditingController();
+  final _fromKey = GlobalKey<FormState>();
   bool isSwitched = false;
   bool _repeat = false;
   bool _alert = false;
 
   @override
   void dispose() {
-    myController.dispose();
+    //myController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController _controller = TextEditingController();
+    String todoTitle = widget.todo.name;
     return Scaffold(
       appBar: ZiplannerAppBar(
         title: 'ToDo',
         subtitle: 'Details',
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Expanded(
-            flex: 9,
-            child: Container(
-              color: backgroundColor,
-              child: ListView(
-                padding: EdgeInsets.symmetric(vertical: 25, horizontal: 20),
-                children: [
-                  Header(ZipIcons.title, 'Title'),
-                  TextFormField(
-                    onChanged: (newValue) {
-                      _controller.text = newValue;
-                    },
-                    initialValue: widget.todo.name,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
+      body: Form(
+        key: _fromKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              flex: 9,
+              child: Container(
+                color: backgroundColor,
+                child: ListView(
+                  padding: EdgeInsets.symmetric(vertical: 25, horizontal: 20),
+                  children: [
+                    Header(ZipIcons.title, 'Title'),
+                    TextFormField(
+                        onChanged: (newValue) => todoTitle = newValue,
+                        initialValue: todoTitle,
+                        validator: (todoTitle) {
+                          return todoTitle.trim().isEmpty
+                              ? 'The title can not be empty'
+                              : null;
+                        },
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
 
-                      //hintText: 'I will',
-                      //hintStyle: kTodoTextFieldHintStyle
-                    ),
-                  ),
-                  Header(ZipIcons.tags, 'Tag'),
-                  Tags(),
-                  Header(ZipIcons.clock, 'ToDo Time'),
-                  Container(
-                    height: 300,
-                    child: CupertinoDatePicker(
-                      minimumDate: DateTime.now(),
-                      onDateTimeChanged: (DateTime dateTime) {
-                        print(dateTime.toString());
-                      },
-                    ),
-                  ),
-                  Header(
-                    ZipIcons.repeat,
-                    'Repeat',
-                    trailing: AdvancedSwitch(
-                      activeColor: activeColor,
-                      height: 20,
-                      width: 45,
-                      activeChild: Transform.scale(
-                        scale: 0.8,
-                        child: Icon(ZipIcons.repeat),
+                          //hintText: 'I will',
+                          //hintStyle: kTodoTextFieldHintStyle
+                        )),
+                    Header(ZipIcons.tags, 'Tag'),
+                    Tags(),
+                    Header(ZipIcons.clock, 'ToDo Time'),
+                    Container(
+                      height: 300,
+                      child: CupertinoDatePicker(
+                        minimumDate: DateTime.now(),
+                        onDateTimeChanged: (DateTime dateTime) {
+                          print(dateTime.toString());
+                        },
                       ),
-                      value: _repeat,
-                      onChanged: (value) {
-                        setState(() {
-                          _repeat = value;
-                        });
-                      },
                     ),
-                  ),
-                  Header(
-                    ZipIcons.alert,
-                    'Remind me',
-                    trailing: AdvancedSwitch(
-                      activeColor: activeColor,
-                      height: 20,
-                      width: 45,
-                      activeChild: Transform.scale(
-                        scale: 0.8,
-                        child: Icon(ZipIcons.alert),
+                    Header(
+                      ZipIcons.repeat,
+                      'Repeat',
+                      trailing: AdvancedSwitch(
+                        activeColor: activeColor,
+                        height: 20,
+                        width: 45,
+                        activeChild: Transform.scale(
+                          scale: 0.8,
+                          child: Icon(ZipIcons.repeat),
+                        ),
+                        value: _repeat,
+                        onChanged: (value) {
+                          setState(() {
+                            _repeat = value;
+                          });
+                        },
                       ),
-                      value: _alert,
-                      onChanged: (value) {
-                        setState(() {
-                          _alert = value;
-                        });
-                      },
                     ),
-                  ),
-                  Header(
-                    ZipIcons.location,
-                    'Location',
-                    trailing: IconButton(
-                      padding: EdgeInsets.all(0),
-                      icon: Icon(
-                        ZipIcons.add,
-                        size: 40,
-                        color: activeColor,
+                    Header(
+                      ZipIcons.alert,
+                      'Remind me',
+                      trailing: AdvancedSwitch(
+                        activeColor: activeColor,
+                        height: 20,
+                        width: 45,
+                        activeChild: Transform.scale(
+                          scale: 0.8,
+                          child: Icon(ZipIcons.alert),
+                        ),
+                        value: _alert,
+                        onChanged: (value) {
+                          setState(() {
+                            _alert = value;
+                          });
+                        },
                       ),
-                      onPressed: () {
-                        print('Location was pressed');
-                      },
                     ),
-                  ),
-                  Header(
-                    ZipIcons.edit,
-                    'Notes',
-                    trailing: IconButton(
-                      padding: EdgeInsets.all(0),
-                      icon: Icon(
-                        ZipIcons.add,
-                        size: 40,
-                        color: activeColor,
+                    Header(
+                      ZipIcons.location,
+                      'Location',
+                      trailing: IconButton(
+                        padding: EdgeInsets.all(0),
+                        icon: Icon(
+                          ZipIcons.add,
+                          size: 40,
+                          color: activeColor,
+                        ),
+                        onPressed: () {
+                          print('Location was pressed');
+                        },
                       ),
-                      onPressed: () {
-                        print('Notes was pressed');
-                      },
                     ),
-                  ),
-                  Header(
-                    ZipIcons.attachment,
-                    'Attachments',
-                    trailing: IconButton(
-                      padding: EdgeInsets.all(0),
-                      icon: Icon(
-                        ZipIcons.add,
-                        size: 40,
-                        color: activeColor,
+                    Header(
+                      ZipIcons.edit,
+                      'Notes',
+                      trailing: IconButton(
+                        padding: EdgeInsets.all(0),
+                        icon: Icon(
+                          ZipIcons.add,
+                          size: 40,
+                          color: activeColor,
+                        ),
+                        onPressed: () {
+                          print('Notes was pressed');
+                        },
                       ),
-                      onPressed: () {
-                        print('Location was pressed');
-                      },
                     ),
-                  ),
-                ],
+                    Header(
+                      ZipIcons.attachment,
+                      'Attachments',
+                      trailing: IconButton(
+                        padding: EdgeInsets.all(0),
+                        icon: Icon(
+                          ZipIcons.add,
+                          size: 40,
+                          color: activeColor,
+                        ),
+                        onPressed: () {
+                          print('Location was pressed');
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          Expanded(
-            flex: 1,
-            child: SafeArea(
-              child: BottomButtons(
-                cancelOnPressed: () {
-                  Navigator.pop(context);
-                },
-                saveOnPressed: () {
-                  print('save was tapped');
-                  TodoData().updateTodo(widget.todo, _controller.text);
-                  Navigator.pop(context);
-                },
+            Expanded(
+              flex: 1,
+              child: SafeArea(
+                child: BottomButtons(
+                  cancelOnPressed: () {
+                    Navigator.pop(context);
+                  },
+                  saveOnPressed: () {
+                    final bool hasTitle = _fromKey.currentState.validate();
+                    if (!hasTitle) {
+                      return;
+                    } else {
+                      TodoData().updateTodo(widget.todo, todoTitle);
+                      Navigator.pop(context);
+                    }
+                  },
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
