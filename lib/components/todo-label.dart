@@ -25,7 +25,11 @@ class TodoLabels extends StatelessWidget {
               padding: const EdgeInsets.all(2.0),
               child: Text(
                 'Today 12:30 pm',
-                style: TextStyle(color: Color(0xFF6E8CA0)),
+                style: TextStyle(
+                    color: Color(0xFF6E8CA0),
+                    fontSize: 11,
+                    fontFamily: 'Roboto',
+                    fontWeight: FontWeight.w500),
               ),
             )),
         Padding(
