@@ -35,10 +35,14 @@ class BottomButtons extends StatelessWidget {
               ),
             ),
           ),
-          VerticalDivider(
-            indent: 10,
-            endIndent: 20,
-            color: Colors.black,
+          Center(
+            child: SafeArea(
+              child: VerticalDivider(
+                // indent: 10,
+                // endIndent: 20,
+                color: Colors.black,
+              ),
+            ),
           ),
           TextButton(
             onPressed: saveOnPressed,
