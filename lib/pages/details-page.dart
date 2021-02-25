@@ -6,12 +6,16 @@ import 'package:ziplanner/components/bottom-buttons.dart';
 import 'package:ziplanner/components/header.dart';
 import 'package:ziplanner/components/tags.dart';
 import 'package:ziplanner/components/ziplanner-appbar.dart';
+import 'package:ziplanner/models/todo-data.dart';
+import 'package:ziplanner/models/todo.dart';
 import 'package:ziplanner/zip-icons.dart';
 
 import '../styles.dart';
 
 class DetailsPage extends StatefulWidget {
   static const String path = '/details';
+  final Todo todo;
+  DetailsPage({this.todo});
 
   @override
   _DetailsPageState createState() => _DetailsPageState();
@@ -31,6 +35,7 @@ class _DetailsPageState extends State<DetailsPage> {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController _controller = TextEditingController();
     return Scaffold(
       appBar: ZiplannerAppBar(
         title: 'ToDo',
@@ -38,7 +43,6 @@ class _DetailsPageState extends State<DetailsPage> {
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Expanded(
             flex: 9,
@@ -49,10 +53,16 @@ class _DetailsPageState extends State<DetailsPage> {
                 children: [
                   Header(ZipIcons.title, 'Title'),
                   TextFormField(
+                    onChanged: (newValue) {
+                      _controller.text = newValue;
+                    },
+                    initialValue: widget.todo.name,
                     decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'I will',
-                        hintStyle: kTodoTextFieldHintStyle),
+                      border: InputBorder.none,
+
+                      //hintText: 'I will',
+                      //hintStyle: kTodoTextFieldHintStyle
+                    ),
                   ),
                   Header(ZipIcons.tags, 'Tag'),
                   Tags(),
@@ -158,10 +168,12 @@ class _DetailsPageState extends State<DetailsPage> {
             child: SafeArea(
               child: BottomButtons(
                 cancelOnPressed: () {
-                  print('cancel was tapped');
+                  Navigator.pop(context);
                 },
                 saveOnPressed: () {
                   print('save was tapped');
+                  TodoData().updateTodo(widget.todo, _controller.text);
+                  Navigator.pop(context);
                 },
               ),
             ),
@@ -171,86 +183,3 @@ class _DetailsPageState extends State<DetailsPage> {
     );
   }
 }
-
-/*TopBar(
-      title: 'ToDo',
-      titleStyle: kAppBarTitleStyle,
-      subtitle: 'Details',
-      subtitleStyle: kAppBarSubtitleStyle,
-      uniqueHeroTag: 'todoAdd',
-      child: Scaffold(
-        body: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Container(
-              padding: EdgeInsets.all(20.0),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Title',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 5.0),
-                    TextFormField(
-                      controller: myController,
-                      keyboardType: TextInputType.multiline,
-                      decoration: InputDecoration(
-                          hintText: 'Task / Event Title',
-                          border: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 32.0),
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Colors.grey, width: 1.0),
-                              borderRadius: BorderRadius.circular(5.0))),
-                      onChanged: (value) {},
-                    ),
-                    SizedBox(height: 10.0),
-                    Container(
-                      height: 300,
-                      child: CupertinoDatePicker(
-                          mode: CupertinoDatePickerMode.dateAndTime,
-                          onDateTimeChanged: (datetime) {
-                            print(datetime.toString());
-                          }),
-                    ),
-                    SizedBox(height: 10.0),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        ElevatedButton(
-                          child: Text('save',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold)),
-                          onPressed: () {
-                            return showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  content: Text(myController.text),
-                                );
-                              },
-                            );
-                          },
-                        ),
-                        ElevatedButton(
-                          //color: Colors.green,
-                          child: Text(
-                            'cancel',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          onPressed: () {},
-                        ),
-                      ],
-                    ),
-                  ]),
-            )),
-      ),
-    ); */

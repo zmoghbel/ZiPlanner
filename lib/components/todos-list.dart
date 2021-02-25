@@ -33,7 +33,7 @@ class TodosList extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => DetailsPage(title: todo.name)),
+                    builder: (context) => DetailsPage(todo: todo)),
               );
             },
             alarmOn: todo.alarmOn,

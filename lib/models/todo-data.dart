@@ -10,7 +10,7 @@ class TodoData extends ChangeNotifier {
   factory TodoData() {
     return _todoData;
   }
-
+//Making TodoData singleton:
   TodoData._internal();
 
   List<Todo> todayTodos = [
