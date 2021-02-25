@@ -65,7 +65,7 @@ class TodoData extends ChangeNotifier {
   //   return _todayTodos.length;
   // }
 
-  void updateTodo(Todo todo) {
+  void onCheckTodo(Todo todo) {
     todo.toggleDone();
     notifyListeners();
   }
@@ -77,6 +77,11 @@ class TodoData extends ChangeNotifier {
 
   void removeTodo(Todo todo, List<Todo> todoList) {
     todoList.remove(todo);
+    notifyListeners();
+  }
+
+  void updateTodo(Todo todo, String newName) {
+    todo.name = newName;
     notifyListeners();
   }
 

@@ -4,6 +4,7 @@ import 'package:ziplanner/components/todo-tile.dart';
 import 'package:ziplanner/models/todo-data.dart';
 import 'package:ziplanner/models/todo.dart';
 import 'package:ziplanner/pages/details-page.dart';
+import 'package:ziplanner/utils.dart';
 
 class TodosList extends StatelessWidget {
   final List<Todo> todos;
@@ -22,12 +23,19 @@ class TodosList extends StatelessWidget {
             isChecked: todo.isDone,
             slidableController: slidableController,
             checkIconCallback: () {
-              TodoData().updateTodo(todo);
+              TodoData().onCheckTodo(todo);
             },
             deleteCallback: () {
               TodoData().removeTodo(todo, todos);
+              Utils.showSnackBar(context, '"${todo.name}" was deleted');
             },
-            editCallback: () => Navigator.pushNamed(context, DetailsPage.path),
+            editCallback: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => DetailsPage(title: todo.name)),
+              );
+            },
             alarmOn: todo.alarmOn,
             toggleAlarmCallback: (bool _) {
               TodoData().switchAlarm(todo);
