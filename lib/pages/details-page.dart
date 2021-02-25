@@ -169,21 +169,19 @@ class _DetailsPageState extends State<DetailsPage> {
             ),
             Expanded(
               flex: 1,
-              child: SafeArea(
-                child: BottomButtons(
-                  cancelOnPressed: () {
+              child: BottomButtons(
+                cancelOnPressed: () {
+                  Navigator.pop(context);
+                },
+                saveOnPressed: () {
+                  final bool hasTitle = _fromKey.currentState.validate();
+                  if (!hasTitle) {
+                    return;
+                  } else {
+                    TodoData().updateTodo(widget.todo, todoTitle);
                     Navigator.pop(context);
-                  },
-                  saveOnPressed: () {
-                    final bool hasTitle = _fromKey.currentState.validate();
-                    if (!hasTitle) {
-                      return;
-                    } else {
-                      TodoData().updateTodo(widget.todo, todoTitle);
-                      Navigator.pop(context);
-                    }
-                  },
-                ),
+                  }
+                },
               ),
             ),
           ],

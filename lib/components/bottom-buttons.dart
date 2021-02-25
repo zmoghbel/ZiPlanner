@@ -13,9 +13,9 @@ class BottomButtons extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: Color(0xFFCCCCCC),
-            blurRadius: 10,
-            spreadRadius: 5,
-            offset: Offset.fromDirection(270, 7),
+            blurRadius: 7,
+            spreadRadius: 0.05,
+            offset: Offset(0, 0),
           ),
         ],
       ),
@@ -36,8 +36,8 @@ class BottomButtons extends StatelessWidget {
             ),
           ),
           VerticalDivider(
-            indent: 5,
-            endIndent: 5,
+            indent: 10,
+            endIndent: 20,
             color: Colors.black,
           ),
           TextButton(
