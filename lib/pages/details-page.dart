@@ -55,19 +55,17 @@ class _DetailsPageState extends State<DetailsPage> {
                   children: [
                     Header(ZipIcons.title, 'Title'),
                     TextFormField(
-                        onChanged: (newValue) => todoTitle = newValue,
-                        initialValue: todoTitle,
-                        validator: (todoTitle) {
-                          return todoTitle.trim().isEmpty
-                              ? 'The title can not be empty'
-                              : null;
-                        },
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-
-                          //hintText: 'I will',
-                          //hintStyle: kTodoTextFieldHintStyle
-                        )),
+                      onChanged: (newValue) => todoTitle = newValue,
+                      initialValue: todoTitle,
+                      validator: (todoTitle) {
+                        return todoTitle.trim().isEmpty
+                            ? 'The title can not be empty'
+                            : null;
+                      },
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                      ),
+                    ),
                     Header(ZipIcons.tags, 'Tag'),
                     Tags(),
                     Header(ZipIcons.clock, 'ToDo Time'),
@@ -178,7 +176,7 @@ class _DetailsPageState extends State<DetailsPage> {
                   if (!hasTitle) {
                     return;
                   } else {
-                    TodoData().updateTodo(widget.todo, todoTitle);
+                    TodoData().updateTodo(widget.todo, todoTitle.trim());
                     Navigator.pop(context);
                   }
                 },
