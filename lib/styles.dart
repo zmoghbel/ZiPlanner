@@ -4,6 +4,8 @@ const Color inactiveColor = Color(0xFFCCCCCC);
 
 const Color activeColor = Color(0xFFD97D54);
 
+const Color kRedColor = Color(0xFFFA5959);
+
 const backgroundColor = Color(0xFFF5F5F5);
 
 const TextStyle kTitleStyle = TextStyle(
@@ -11,6 +13,13 @@ const TextStyle kTitleStyle = TextStyle(
   fontFamily: 'Roboto',
   fontSize: 20.0,
   fontWeight: FontWeight.w700,
+);
+
+const TextStyle kTagStyle = TextStyle(
+  color: Color(0xFFFFFFFF),
+  fontFamily: 'Roboto',
+  fontSize: 15.0,
+  fontWeight: FontWeight.normal,
 );
 
 const TextStyle kAppBarTitleStyle = TextStyle(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ziplanner/components/todos-list.dart';
 import 'package:ziplanner/models/todo.dart';
+
 import '../styles.dart';
 
 class DayList extends StatefulWidget {
@@ -17,8 +18,7 @@ class _DayListState extends State<DayList> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-          const EdgeInsets.only(top: 50.0, left: 20, right: 20, bottom: 10),
+      padding: const EdgeInsets.only(top: 50.0, left: 20, right: 20, bottom: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

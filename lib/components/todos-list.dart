@@ -32,8 +32,7 @@ class TodosList extends StatelessWidget {
             editCallback: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                    builder: (context) => DetailsPage(todo: todo)),
+                MaterialPageRoute(builder: (context) => DetailsPage(todo: todo, todoList: todos)),
               );
             },
             alarmOn: todo.alarmOn,

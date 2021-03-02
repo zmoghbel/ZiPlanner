@@ -9,12 +9,15 @@ import 'package:ziplanner/components/ziplanner-appbar.dart';
 import 'package:ziplanner/models/todo-data.dart';
 import 'package:ziplanner/models/todo.dart';
 import 'package:ziplanner/zip-icons.dart';
+
 import '../styles.dart';
+import '../utils.dart';
 
 class DetailsPage extends StatefulWidget {
   static const String path = '/details';
   final Todo todo;
-  DetailsPage({this.todo});
+  final List<Todo> todoList;
+  DetailsPage({this.todo, this.todoList});
 
   @override
   _DetailsPageState createState() => _DetailsPageState();
@@ -58,9 +61,7 @@ class _DetailsPageState extends State<DetailsPage> {
                       onChanged: (newValue) => todoTitle = newValue,
                       initialValue: todoTitle,
                       validator: (todoTitle) {
-                        return todoTitle.trim().isEmpty
-                            ? 'The title can not be empty'
-                            : null;
+                        return todoTitle.trim().isEmpty ? 'The title can not be empty' : null;
                       },
                       decoration: InputDecoration(
                         border: InputBorder.none,
@@ -158,6 +159,27 @@ class _DetailsPageState extends State<DetailsPage> {
                         ),
                         onPressed: () {
                           print('Location was pressed');
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(100, 10, 100, 10),
+                      child: TextButton.icon(
+                        icon: Icon(ZipIcons.delete),
+                        label: Text(
+                          'Delete This Task',
+                          style: kTagStyle,
+                        ),
+                        style: TextButton.styleFrom(
+                          primary: Colors.white,
+                          backgroundColor: kRedColor,
+                          elevation: 3,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(25))),
+                        ),
+                        onPressed: () {
+                          TodoData().removeTodo(widget.todo, widget.todoList);
+                          Navigator.pop(context);
+                          Utils.showSnackBar(context, '"${widget.todo.name}" was deleted');
                         },
                       ),
                     ),
