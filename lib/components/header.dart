@@ -4,8 +4,8 @@ import '../styles.dart';
 
 class Header extends StatelessWidget {
   final IconData icon;
-  final title;
-  final trailing;
+  final String title;
+  final Widget trailing;
 
   Header(this.icon, this.title, {this.trailing});
 
