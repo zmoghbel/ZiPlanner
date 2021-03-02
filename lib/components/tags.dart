@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ziplanner/zip-icons.dart';
 
+import '../styles.dart';
+
 //enum tag { none, important, personal, work }
 
 class TagData {
@@ -11,6 +13,24 @@ class TagData {
 
   const TagData({@required this.icon, @required this.text, @required this.color});
 }
+
+final List<TagData> tags = [
+  TagData(
+    icon: ZipIcons.important,
+    text: 'Important',
+    color: kRedColor,
+  ),
+  TagData(
+    icon: ZipIcons.personal,
+    text: 'Personal',
+    color: Color(0xFFF29CCB1),
+  ),
+  TagData(
+    icon: ZipIcons.work,
+    text: 'Work',
+    color: Color(0xFF2987CC),
+  ),
+];
 
 class TagButton extends StatefulWidget {
   final IconData icon;
@@ -31,7 +51,10 @@ class _TagButtonState extends State<TagButton> {
       margin: EdgeInsets.symmetric(horizontal: 2),
       child: TextButton.icon(
         icon: Icon(widget.icon),
-        label: Text(widget.text),
+        label: Text(
+          widget.text,
+          style: kTagStyle,
+        ),
         style: TextButton.styleFrom(
           primary: Colors.white,
           backgroundColor: selected ? widget.color : widget.color.withOpacity(0.5),
@@ -48,24 +71,6 @@ class _TagButtonState extends State<TagButton> {
   }
 }
 
-final List<TagData> tags = [
-  TagData(
-    icon: ZipIcons.important,
-    text: 'Important',
-    color: Color(0xFFFA5959),
-  ),
-  TagData(
-    icon: ZipIcons.personal,
-    text: 'Personal',
-    color: Color(0xFFF29CCB1),
-  ),
-  TagData(
-    icon: ZipIcons.work,
-    text: 'Work',
-    color: Color(0xFF2987CC),
-  ),
-];
-
 class Tags extends StatelessWidget {
   //tag selectedTag;
 
@@ -76,13 +81,15 @@ class Tags extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: tags
-            .map((tagData) => Expanded(
-                  child: TagButton(
-                    icon: tagData.icon,
-                    text: tagData.text,
-                    color: tagData.color,
-                  ),
-                ))
+            .map(
+              (tagData) => Expanded(
+                child: TagButton(
+                  icon: tagData.icon,
+                  text: tagData.text,
+                  color: tagData.color,
+                ),
+              ),
+            )
             .toList(),
       ),
     );
