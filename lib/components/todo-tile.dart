@@ -6,6 +6,8 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:ziplanner/components/todo-label.dart';
 import 'package:ziplanner/zip-icons.dart';
 
+import '../styles.dart';
+
 class TodoTile extends StatelessWidget {
   final String title;
   final bool isChecked;
@@ -74,13 +76,9 @@ class TodoTile extends StatelessWidget {
         ),
         title: Text(
           title,
-          style: TextStyle(
+          style: kTodoTextStyle.copyWith(
             decoration:
                 isChecked ? TextDecoration.lineThrough : TextDecoration.none,
-            fontSize: 20,
-            color: Color(0XFF334856),
-            fontFamily: 'Roboto',
-            fontWeight: FontWeight.w500,
           ),
         ),
         subtitle: TodoLabels(),

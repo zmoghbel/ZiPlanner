@@ -15,6 +15,13 @@ const TextStyle kTitleStyle = TextStyle(
   fontWeight: FontWeight.w700,
 );
 
+const TextStyle kTodoTextStyle = TextStyle(
+  fontSize: 20,
+  color: Color(0XFF334856),
+  fontFamily: 'Roboto',
+  fontWeight: FontWeight.w500,
+);
+
 const TextStyle kTagStyle = TextStyle(
   color: Color(0xFFFFFFFF),
   fontFamily: 'Roboto',
