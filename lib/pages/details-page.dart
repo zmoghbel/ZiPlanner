@@ -38,6 +38,8 @@ class _DetailsPageState extends State<DetailsPage> {
 
   @override
   Widget build(BuildContext context) {
+    DateTime selectedTime = widget.todo.time;
+
     String todoTitle = widget.todo.name;
     return Scaffold(
       appBar: ZiplannerAppBar(
@@ -61,7 +63,9 @@ class _DetailsPageState extends State<DetailsPage> {
                       onChanged: (newValue) => todoTitle = newValue,
                       initialValue: todoTitle,
                       validator: (todoTitle) {
-                        return todoTitle.trim().isEmpty ? 'The title can not be empty' : null;
+                        return todoTitle.trim().isEmpty
+                            ? 'The title can not be empty'
+                            : null;
                       },
                       decoration: InputDecoration(
                         border: InputBorder.none,
@@ -71,11 +75,13 @@ class _DetailsPageState extends State<DetailsPage> {
                     Tags(),
                     Header(ZipIcons.clock, 'ToDo Time'),
                     Container(
-                      height: 300,
+                      height: 150,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 30, vertical: 0),
                       child: CupertinoDatePicker(
                         minimumDate: DateTime.now(),
                         onDateTimeChanged: (DateTime dateTime) {
-                          print(dateTime.toString());
+                          selectedTime = dateTime ?? selectedTime;
                         },
                       ),
                     ),
@@ -174,12 +180,15 @@ class _DetailsPageState extends State<DetailsPage> {
                           primary: Colors.white,
                           backgroundColor: kRedColor,
                           elevation: 3,
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(25))),
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(25))),
                         ),
                         onPressed: () {
                           TodoData().removeTodo(widget.todo, widget.todoList);
                           Navigator.pop(context);
-                          Utils.showSnackBar(context, '"${widget.todo.name}" was deleted');
+                          Utils.showSnackBar(
+                              context, '"${widget.todo.name}" was deleted');
                         },
                       ),
                     ),
@@ -194,11 +203,16 @@ class _DetailsPageState extends State<DetailsPage> {
                   Navigator.pop(context);
                 },
                 saveOnPressed: () {
+                  //Saving changes after validating that todo title is not empty:
                   final bool hasTitle = _fromKey.currentState.validate();
                   if (!hasTitle) {
                     return;
                   } else {
-                    TodoData().updateTodo(widget.todo, todoTitle.trim());
+                    TodoData().updateTodo(
+                      widget.todo,
+                      todoTitle.trim(),
+                      selectedTime,
+                    );
                     Navigator.pop(context);
                   }
                 },
