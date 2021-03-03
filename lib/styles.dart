@@ -22,6 +22,12 @@ const TextStyle kTodoTextStyle = TextStyle(
   fontWeight: FontWeight.w500,
 );
 
+const TextStyle kTodoTimeStyle = TextStyle(
+    color: Color(0xFF6E8CA0),
+    fontSize: 11,
+    fontFamily: 'Roboto',
+    fontWeight: FontWeight.w500);
+
 const TextStyle kTagStyle = TextStyle(
   color: Color(0xFFFFFFFF),
   fontFamily: 'Roboto',

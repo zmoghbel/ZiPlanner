@@ -17,6 +17,7 @@ class TodoTile extends StatelessWidget {
   final SlidableController slidableController;
   final bool alarmOn;
   final Function toggleAlarmCallback;
+  final DateTime todoDateTime;
 
   TodoTile(
       {this.title,
@@ -26,7 +27,8 @@ class TodoTile extends StatelessWidget {
       this.editCallback,
       this.slidableController,
       this.alarmOn,
-      this.toggleAlarmCallback});
+      this.toggleAlarmCallback,
+      this.todoDateTime});
   @override
   Widget build(BuildContext context) {
     return Slidable(
@@ -81,7 +83,9 @@ class TodoTile extends StatelessWidget {
                 isChecked ? TextDecoration.lineThrough : TextDecoration.none,
           ),
         ),
-        subtitle: TodoLabels(),
+        subtitle: TodoLabels(
+          todoTime: todoDateTime,
+        ),
         trailing: alarmOn == null
             ? SizedBox()
             : AdvancedSwitch(

@@ -30,6 +30,12 @@ class TodoData extends ChangeNotifier {
       time: DateTime(now.year, now.month, now.day),
       alarmOn: true,
     ),
+    Todo(
+      name: 'Return the sweater to the store',
+      isDone: false,
+      //time: DateTime(now.year, now.month, now.day),
+      alarmOn: true,
+    ),
   ];
 
   // UnmodifiableListView<Todo> get todayTodos {
@@ -51,14 +57,14 @@ class TodoData extends ChangeNotifier {
   ];
 
   List<Todo> futureTodos = [
-    // Todo(
-    //   name: 'Ikea shopping',
-    // ),
-    // Todo(
-    //   name: 'Reading a book',
-    //   isDone: true,
-    // ),
-    // Todo(name: 'programming', isDone: false),
+    Todo(
+      name: 'Ikea shopping',
+    ),
+    Todo(
+      name: 'Reading a book',
+      isDone: true,
+    ),
+    Todo(name: 'programming', isDone: false),
   ];
 
   // int get todayCount {
@@ -80,8 +86,11 @@ class TodoData extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateTodo(Todo todo, String newName) {
+  void updateTodo(Todo todo, String newName, DateTime todoDate) {
     todo.name = newName;
+    todo.time = todoDate;
+    print(
+        '${todo.name} in ${todo.time} is done ${todo.isDone} has ${todo.alarmOn} alarm and has this id: ${todo.id}');
     notifyListeners();
   }
 

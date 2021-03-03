@@ -20,6 +20,7 @@ class TodosList extends StatelessWidget {
         (todo) {
           return TodoTile(
             title: todo.name,
+            todoDateTime: todo.time,
             isChecked: todo.isDone,
             slidableController: slidableController,
             checkIconCallback: () {
@@ -32,7 +33,9 @@ class TodosList extends StatelessWidget {
             editCallback: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => DetailsPage(todo: todo, todoList: todos)),
+                MaterialPageRoute(
+                    builder: (context) =>
+                        DetailsPage(todo: todo, todoList: todos)),
               );
             },
             alarmOn: todo.alarmOn,
