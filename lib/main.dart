@@ -8,7 +8,14 @@ import 'package:ziplanner/pages/home-page.dart';
 import 'models/todo-data.dart';
 
 void main() {
-  runApp(ZiplannerApp());
+  runApp(
+    /// Providers are above MyApp in our case [ZiplannerApp] instead of inside it, so that
+    /// tests can use [ZiplannerApp] while mocking the providers
+    ChangeNotifierProvider(
+      create: (_) => TodoData(),
+      child: ZiplannerApp(),
+    ),
+  );
 }
 
 class ZiplannerApp extends StatelessWidget {
@@ -22,23 +29,20 @@ class ZiplannerApp extends StatelessWidget {
         systemNavigationBarColor: Color(0XFFD97D54),
       ),
     );
-    return ChangeNotifierProvider(
-      create: (context) => TodoData(),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        initialRoute: '/',
-        routes: {
-          '/': (context) => Home(),
-          DetailsPage.path: (context) => DetailsPage(),
-        },
-        localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
-          DefaultMaterialLocalizations.delegate,
-          DefaultWidgetsLocalizations.delegate,
-        ],
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => Home(),
+        DetailsPage.path: (context) => DetailsPage(),
+      },
+      localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
+        DefaultMaterialLocalizations.delegate,
+        DefaultWidgetsLocalizations.delegate,
+      ],
     );
   }
 }
