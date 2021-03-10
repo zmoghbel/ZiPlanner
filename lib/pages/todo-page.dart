@@ -33,11 +33,8 @@ class ToDoPage extends StatelessWidget {
                   right: 20,
                   bottom: 5,
                 ),
-                child: TodoTextField(
-                  todos: todoData.todayTodos,
-                ),
+                child: TodoTextField(),
               ),
-              //color: activeColor,
             ),
           ],
         );

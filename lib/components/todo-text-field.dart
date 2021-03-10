@@ -2,36 +2,23 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:ziplanner/models/todo-data.dart';
-import 'package:ziplanner/models/todo.dart';
 import 'package:ziplanner/zip-icons.dart';
-
 import '../styles.dart';
 
 class TodoTextField extends StatefulWidget {
-  final List<Todo> todos;
-  final Function hideTextField;
-  TodoTextField({this.todos, this.hideTextField});
-
   @override
   _TodoTextFieldState createState() => _TodoTextFieldState();
 }
 
 class _TodoTextFieldState extends State<TodoTextField> {
-  bool hasText = false;
-
   TextEditingController _controller = TextEditingController();
-
-  // void submitTodo(todo) {
-  //   if (todo.isNotEmpty) {
-  //     TodoData().addTodo(todo, widget.todos);
-  //     _controller.clear();
-  //     widget.hideTextField();
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
+    bool hasText = _controller.text.trim().isNotEmpty;
+oDa
     return Padding(
       padding: EdgeInsets.only(bottom: 10),
       child: Container(
@@ -51,11 +38,8 @@ class _TodoTextFieldState extends State<TodoTextField> {
           autofocus: false,
           controller: _controller,
           textInputAction: TextInputAction.done,
-          //onSubmitted: (todoText) {submitTodo(todoText);},
           onChanged: (value) {
-            setState(() {
-              hasText = value.isEmpty ? false : true;
-            });
+            setState(() {});
           },
           decoration: InputDecoration(
             fillColor: Color(0xFFFFFFFF),
@@ -73,9 +57,10 @@ class _TodoTextFieldState extends State<TodoTextField> {
                 ),
                 onPressed: () {
                   if (hasText) {
-                    TodoData().addTodo(_controller.text, widget.todos);
+                    Provider.of<TodoData>(context, listen: false).addTodo(
+                      _controller.text.trim(),
+                    );
                     _controller.clear();
-                    // widget.hideTextField();
                   }
                 },
               ),
