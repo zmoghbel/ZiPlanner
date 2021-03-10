@@ -16,8 +16,8 @@ import '../utils.dart';
 class DetailsPage extends StatefulWidget {
   static const String path = '/details';
   final Todo todo;
-  final List<Todo> todoList;
-  DetailsPage({this.todo, this.todoList});
+
+  DetailsPage([this.todo]);
 
   @override
   _DetailsPageState createState() => _DetailsPageState();
@@ -185,7 +185,7 @@ class _DetailsPageState extends State<DetailsPage> {
                                   BorderRadius.all(Radius.circular(25))),
                         ),
                         onPressed: () {
-                          TodoData().removeTodo(widget.todo, widget.todoList);
+                          TodoData().removeTodo(widget.todo);
                           Navigator.pop(context);
                           Utils.showSnackBar(
                               context, '"${widget.todo.name}" was deleted');

@@ -13,7 +13,7 @@ class TodoData extends ChangeNotifier {
 //Making TodoData singleton:
   TodoData._internal();
 
-  List<Todo> todayTodos = [
+  List<Todo> todos = [
     Todo(
       name: 'Go shopping',
       isDone: true,
@@ -36,14 +36,6 @@ class TodoData extends ChangeNotifier {
       //time: DateTime(now.year, now.month, now.day),
       alarmOn: true,
     ),
-  ];
-
-  // UnmodifiableListView<Todo> get todayTodos {
-  //   notifyListeners();
-  //   return UnmodifiableListView(_todayTodos);
-  // }
-
-  List<Todo> tommorrowTodos = [
     Todo(
       name: 'Call Mom',
       time: DateTime(now.year, now.month, now.day + 1),
@@ -54,9 +46,6 @@ class TodoData extends ChangeNotifier {
       time: DateTime(now.year, now.month, now.day + 1),
       alarmOn: false,
     ),
-  ];
-
-  List<Todo> futureTodos = [
     Todo(
       name: 'Ikea shopping',
     ),
@@ -67,8 +56,9 @@ class TodoData extends ChangeNotifier {
     Todo(name: 'programming', isDone: false),
   ];
 
-  // int get todayCount {
-  //   return _todayTodos.length;
+  // UnmodifiableListView<Todo> get todayTodos {
+  //   notifyListeners();
+  //   return UnmodifiableListView(_todayTodos);
   // }
 
   void onCheckTodo(Todo todo) {
@@ -77,12 +67,12 @@ class TodoData extends ChangeNotifier {
   }
 
   void addTodo(String newTodoTitle) {
-    tommorrowTodos.insert(0, Todo(name: newTodoTitle));
+    todos.insert(0, Todo(name: newTodoTitle));
     notifyListeners();
   }
 
-  void removeTodo(Todo todo, List<Todo> todoList) {
-    todoList.remove(todo);
+  void removeTodo(Todo todo) {
+    todos.remove(todo);
     notifyListeners();
   }
 
