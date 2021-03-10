@@ -5,8 +5,9 @@ import '../styles.dart';
 
 class DayList extends StatelessWidget {
   final String dayTitle;
+  final DateTime date;
 
-  DayList(this.dayTitle);
+  DayList(this.dayTitle, this.date);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class DayList extends StatelessWidget {
         children: [
           Text(dayTitle, style: kTitleStyle),
           SizedBox(height: 15),
-          TodosList(dayTitle),
+          TodosList(date),
         ],
       ),
     );

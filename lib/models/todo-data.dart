@@ -43,7 +43,7 @@ class TodoData extends ChangeNotifier {
     Todo(
       name: 'Cal Dad',
       isDone: false,
-      time: DateTime(now.year, now.month, now.day + 1),
+      time: DateTime(now.year, now.month, now.day + 5),
       alarmOn: false,
     ),
     Todo(

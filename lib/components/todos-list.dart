@@ -7,9 +7,9 @@ import 'package:ziplanner/pages/details-page.dart';
 import 'package:ziplanner/utils.dart';
 
 class TodosList extends StatelessWidget {
-  final String dayTitle;
+  final DateTime date;
 
-  TodosList(this.dayTitle);
+  TodosList(this.date);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,13 @@ class TodosList extends StatelessWidget {
       builder: (BuildContext context, TodoData todoData, Widget child) {
         return Column(
           mainAxisSize: MainAxisSize.min,
-          children: todoData.todos.map<Widget>(
+          children: todoData.todos
+              .where((todo) => this.date != null
+                  ? todo.time?.day == this.date.day
+                  : todo.time == null ||
+                      todo.time
+                          .isAfter(DateTime.now().add(const Duration(days: 2))))
+              .map<Widget>(
             (todo) {
               return TodoTile(
                 title: todo.name,

@@ -13,9 +13,9 @@ class ToDoPage extends StatelessWidget {
           flex: 8,
           child: ListView(
             children: [
-              DayList('Today'),
-              DayList('Tomorrow'),
-              DayList('In The Future'),
+              DayList('Today', DateTime.now()),
+              DayList('Tomorrow', DateTime.now().add(const Duration(days: 1))),
+              DayList('In The Future', null),
             ],
           ),
         ),
