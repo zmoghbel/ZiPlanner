@@ -66,8 +66,8 @@ class TodoData extends ChangeNotifier {
     notifyListeners();
   }
 
-  void addTodo(String newTodoTitle) {
-    todos.insert(0, Todo(name: newTodoTitle));
+  void addTodo(String newTodoTitle, DateTime time) {
+    todos.insert(0, Todo(name: newTodoTitle, time: time));
     notifyListeners();
   }
 

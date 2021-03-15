@@ -68,9 +68,8 @@ class _TodoTextFieldState extends State<TodoTextField> {
                 ),
                 onPressed: () async {
                   if (hasText) {
-                    Provider.of<TodoData>(context, listen: false).addTodo(
-                      _controller.text.trim(),
-                    );
+                    Provider.of<TodoData>(context, listen: false)
+                        .addTodo(_controller.text.trim(), DateTime.now());
                     await _dbHelper.insertTodo(Todo(
                         name: _controller.text.trim(), time: DateTime.now()));
                     print(Todo(
