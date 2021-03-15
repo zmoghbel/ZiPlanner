@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ziplanner/models/todo-data.dart';
+import 'package:ziplanner/models/todo.dart';
+import 'package:ziplanner/utils/database_helper.dart';
 import 'package:ziplanner/zip-icons.dart';
 import '../styles.dart';
 
@@ -14,6 +16,15 @@ class TodoTextField extends StatefulWidget {
 
 class _TodoTextFieldState extends State<TodoTextField> {
   TextEditingController _controller = TextEditingController();
+  DatabaseHelper _dbHelper;
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      _dbHelper = DatabaseHelper.instance;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,11 +66,15 @@ class _TodoTextFieldState extends State<TodoTextField> {
                   color: hasText ? activeColor : inactiveColor,
                   size: 42,
                 ),
-                onPressed: () {
+                onPressed: () async {
                   if (hasText) {
                     Provider.of<TodoData>(context, listen: false).addTodo(
                       _controller.text.trim(),
                     );
+                    await _dbHelper.insertTodo(Todo(
+                        name: _controller.text.trim(), time: DateTime.now()));
+                    print(Todo(
+                        name: _controller.text.trim(), time: DateTime.now()));
                     _controller.clear();
                   }
                 },
