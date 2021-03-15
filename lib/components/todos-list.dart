@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:ziplanner/components/todo-tile.dart';
 import 'package:ziplanner/models/todo-data.dart';
 import 'package:ziplanner/pages/details-page.dart';
-import 'package:ziplanner/utils.dart';
+import 'package:ziplanner/components/zip-snack-bar.dart';
 
 class TodosList extends StatelessWidget {
   final DateTime date;
@@ -36,7 +36,8 @@ class TodosList extends StatelessWidget {
                 },
                 deleteCallback: () {
                   todoData.removeTodo(todo);
-                  Utils.showSnackBar(context, '"${todo.name}" was deleted');
+                  ZipSnackBar.showSnackBar(
+                      context, '"${todo.name}" was deleted');
                 },
                 editCallback: () {
                   Navigator.push(

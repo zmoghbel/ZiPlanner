@@ -5,13 +5,13 @@ import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
 import 'package:ziplanner/components/bottom-buttons.dart';
 import 'package:ziplanner/components/header.dart';
 import 'package:ziplanner/components/tags.dart';
+import 'package:ziplanner/components/zip-snack-bar.dart';
 import 'package:ziplanner/components/ziplanner-appbar.dart';
 import 'package:ziplanner/models/todo-data.dart';
 import 'package:ziplanner/models/todo.dart';
 import 'package:ziplanner/zip-icons.dart';
 
 import '../styles.dart';
-import '../utils.dart';
 
 class DetailsPage extends StatefulWidget {
   static const String path = '/details';
@@ -187,7 +187,7 @@ class _DetailsPageState extends State<DetailsPage> {
                         onPressed: () {
                           TodoData().removeTodo(widget.todo);
                           Navigator.pop(context);
-                          Utils.showSnackBar(
+                          ZipSnackBar.showSnackBar(
                               context, '"${widget.todo.name}" was deleted');
                         },
                       ),
