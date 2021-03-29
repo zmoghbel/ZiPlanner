@@ -2,8 +2,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:ziplanner/models/todo-data.dart';
+// import 'package:provider/provider.dart';
+// import 'package:ziplanner/models/todo-data.dart';
 import 'package:ziplanner/models/todo.dart';
 import 'package:ziplanner/utils/database_helper.dart';
 import 'package:ziplanner/zip-icons.dart';
@@ -68,10 +68,14 @@ class _TodoTextFieldState extends State<TodoTextField> {
                 ),
                 onPressed: () async {
                   if (hasText) {
-                    Provider.of<TodoData>(context, listen: false)
-                        .addTodo(_controller.text.trim(), DateTime.now());
-                    await _dbHelper.insertTodo(Todo(
-                        name: _controller.text.trim(), time: DateTime.now()));
+                    // Provider.of<TodoData>(context, listen: false)
+                    //     .addTodo(_controller.text.trim(), DateTime.now());
+                    await _dbHelper.insertTodo(
+                      Todo(
+                        name: _controller.text.trim(),
+                        time: DateTime.now(),
+                      ),
+                    );
                     print(Todo(
                         name: _controller.text.trim(), time: DateTime.now()));
                     _controller.clear();

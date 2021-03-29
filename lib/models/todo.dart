@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class Todo {
-  static const tblTodo = 'todos';
-  static const colId = 'Id';
-  static const colName = 'Name';
-  static const colTodoDateTime = 'TodoDateTime';
-  static const colIsDone = 'IsDone';
-  static const colAlarmOn = 'AlarmOn';
+  static const todoTabel = 'todos';
+  static const colId = 'id';
+  static const colName = 'name';
+  static const colTodoDateTime = 'todo_date_time';
+  static const colIsDone = 'is_done';
+  static const colAlarmOn = 'alarm_on';
 
   int id;
   String name;
@@ -21,20 +21,21 @@ class Todo {
       this.isDone = false,
       this.alarmOn = false});
 
+  //Named Constructor
   Todo.fromMap(Map<String, dynamic> map) {
     id = map[colId];
     name = map[colName];
     time = DateTime.tryParse(map[colTodoDateTime]);
-    isDone = map[colIsDone];
-    alarmOn = map[colAlarmOn];
+    isDone = (map[colIsDone] == 1) ? true : false;
+    alarmOn = (map[colAlarmOn] == 1) ? true : false;
   }
 
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{
       colName: name,
       colTodoDateTime: time.toString(),
-      colIsDone: isDone,
-      colAlarmOn: alarmOn
+      colIsDone: isDone ? 1 : 0,
+      colAlarmOn: alarmOn ? 1 : 0,
     };
     if (id != null) map[colId] = id;
     return map;

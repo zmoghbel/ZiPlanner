@@ -3,13 +3,39 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 import 'package:ziplanner/components/todo-tile.dart';
 import 'package:ziplanner/models/todo-data.dart';
-import 'package:ziplanner/pages/details-page.dart';
-import 'package:ziplanner/components/zip-snack-bar.dart';
+import 'package:ziplanner/models/todo.dart';
+// import 'package:ziplanner/pages/details-page.dart';
+// import 'package:ziplanner/components/zip-snack-bar.dart';
+import 'package:ziplanner/utils/database_helper.dart';
 
-class TodosList extends StatelessWidget {
+class TodosList extends StatefulWidget {
   final DateTime date;
 
   TodosList(this.date);
+
+  @override
+  _TodosListState createState() => _TodosListState();
+}
+
+class _TodosListState extends State<TodosList> {
+  DatabaseHelper _dbHelper;
+  List<Todo> todoData = [];
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      _dbHelper = DatabaseHelper.instance;
+    });
+    refreshTodoList();
+  }
+
+  refreshTodoList() async {
+    List<Todo> todoList = await _dbHelper.fetchTodos();
+    setState(() {
+      todoData = todoList;
+      print(todoData);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +45,8 @@ class TodosList extends StatelessWidget {
         return Column(
           mainAxisSize: MainAxisSize.min,
           children: todoData.todos
-              .where((todo) => this.date != null
-                  ? todo.time?.day == this.date.day
+              .where((todo) => this.widget.date != null
+                  ? todo.time?.day == this.widget.date.day
                   : todo.time == null ||
                       todo.time
                           .isAfter(DateTime.now().add(const Duration(days: 2))))
@@ -31,7 +57,7 @@ class TodosList extends StatelessWidget {
                 todoDateTime: todo.time,
                 isChecked: todo.isDone,
                 slidableController: slidableController,
-                checkIconCallback: () {
+                /*checkIconCallback: () {
                   todoData.onCheckTodo(todo);
                 },
                 deleteCallback: () {
@@ -48,7 +74,7 @@ class TodosList extends StatelessWidget {
                 alarmOn: todo.alarmOn,
                 toggleAlarmCallback: (bool _) {
                   todoData.switchAlarm(todo);
-                },
+                },*/
               );
             },
           ).toList(),

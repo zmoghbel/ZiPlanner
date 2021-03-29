@@ -5,13 +5,13 @@ import 'package:ziplanner/models/todo.dart';
 final now = DateTime.now();
 
 class TodoData extends ChangeNotifier {
-  static final TodoData _todoData = TodoData._internal();
+  static final TodoData _todoData = TodoData._();
 
   factory TodoData() {
     return _todoData;
   }
 //Making TodoData singleton:
-  TodoData._internal();
+  TodoData._();
 
   List<Todo> todos = [
     Todo(
