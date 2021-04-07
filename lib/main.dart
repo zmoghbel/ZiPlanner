@@ -2,16 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:ziplanner/models/todo_data.dart';
 import 'package:ziplanner/pages/details-page.dart';
 import 'package:ziplanner/pages/home-page.dart';
-
-import 'models/todo-data.dart';
 
 void main() {
   runApp(
     /// Providers are above MyApp in our case [ZiplannerApp] instead of inside it, so that
     /// tests can use [ZiplannerApp] while mocking the providers
-    ChangeNotifierProvider(
+    ChangeNotifierProvider<TodoData>(
       create: (_) => TodoData(),
       child: ZiplannerApp(),
     ),

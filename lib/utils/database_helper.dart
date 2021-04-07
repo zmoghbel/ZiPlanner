@@ -8,6 +8,10 @@ class DatabaseHelper {
   static const _databaseName = 'TodoData.db';
   static const _databaseVersion = 1;
 
+  DatabaseHelper() {
+    _initDatabase();
+  }
+
   //Singleton class
   DatabaseHelper._();
   static final DatabaseHelper instance = DatabaseHelper._();

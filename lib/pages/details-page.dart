@@ -7,7 +7,6 @@ import 'package:ziplanner/components/header.dart';
 import 'package:ziplanner/components/tags.dart';
 import 'package:ziplanner/components/zip-snack-bar.dart';
 import 'package:ziplanner/components/ziplanner-appbar.dart';
-import 'package:ziplanner/models/todo-data.dart';
 import 'package:ziplanner/models/todo.dart';
 import 'package:ziplanner/zip-icons.dart';
 
@@ -185,7 +184,8 @@ class _DetailsPageState extends State<DetailsPage> {
                                   BorderRadius.all(Radius.circular(25))),
                         ),
                         onPressed: () {
-                          TodoData().removeTodo(widget.todo);
+                          //TODO: implement delete todo
+                          //TodoData().removeTodo(widget.todo);
                           Navigator.pop(context);
                           ZipSnackBar.showSnackBar(
                               context, '"${widget.todo.name}" was deleted');
@@ -208,11 +208,12 @@ class _DetailsPageState extends State<DetailsPage> {
                   if (!hasTitle) {
                     return;
                   } else {
-                    TodoData().updateTodo(
+                    //TODO: implement update todo
+                    /* TodoData().updateTodo(
                       widget.todo,
                       todoTitle.trim(),
                       selectedTime,
-                    );
+                    );*/
                     Navigator.pop(context);
                   }
                 },

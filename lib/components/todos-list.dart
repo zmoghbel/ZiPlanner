@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 import 'package:ziplanner/components/todo-tile.dart';
-import 'package:ziplanner/models/todo-data.dart';
 import 'package:ziplanner/models/todo.dart';
+import 'package:ziplanner/models/todo_data.dart';
 // import 'package:ziplanner/pages/details-page.dart';
 // import 'package:ziplanner/components/zip-snack-bar.dart';
 import 'package:ziplanner/utils/database_helper.dart';
@@ -44,7 +44,7 @@ class _TodosListState extends State<TodosList> {
       builder: (BuildContext context, TodoData todoData, Widget child) {
         return Column(
           mainAxisSize: MainAxisSize.min,
-          children: todoData.todos
+          children: todoData.todoList
               .where((todo) => this.widget.date != null
                   ? todo.time?.day == this.widget.date.day
                   : todo.time == null ||
