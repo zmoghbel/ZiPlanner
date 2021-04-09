@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 import 'package:ziplanner/components/todo-tile.dart';
+import 'package:ziplanner/components/zip-snack-bar.dart';
 import 'package:ziplanner/models/todo.dart';
-import 'package:ziplanner/models/todo_data.dart';
-// import 'package:ziplanner/pages/details-page.dart';
-// import 'package:ziplanner/components/zip-snack-bar.dart';
+import 'package:ziplanner/models/todo-data.dart';
+import 'package:ziplanner/pages/details-page.dart';
 import 'package:ziplanner/utils/database_helper.dart';
 
 class TodosList extends StatefulWidget {
@@ -57,11 +57,11 @@ class _TodosListState extends State<TodosList> {
                 todoDateTime: todo.time,
                 isChecked: todo.isDone,
                 slidableController: slidableController,
-                /*checkIconCallback: () {
+                checkIconCallback: () {
                   todoData.onCheckTodo(todo);
                 },
                 deleteCallback: () {
-                  todoData.removeTodo(todo);
+                  todoData.deleteTodo(todo);
                   ZipSnackBar.showSnackBar(
                       context, '"${todo.name}" was deleted');
                 },
@@ -74,7 +74,7 @@ class _TodosListState extends State<TodosList> {
                 alarmOn: todo.alarmOn,
                 toggleAlarmCallback: (bool _) {
                   todoData.switchAlarm(todo);
-                },*/
+                },
               );
             },
           ).toList(),

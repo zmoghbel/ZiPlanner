@@ -3,10 +3,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-// import 'package:provider/provider.dart';
-// import 'package:ziplanner/models/todo-data.dart';
 import 'package:ziplanner/models/todo.dart';
-import 'package:ziplanner/models/todo_data.dart';
+import 'package:ziplanner/models/todo-data.dart';
 import 'package:ziplanner/utils/database_helper.dart';
 import 'package:ziplanner/zip-icons.dart';
 import '../styles.dart';

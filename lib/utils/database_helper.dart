@@ -58,4 +58,16 @@ class DatabaseHelper {
     List<Map<String, Object>> todos = await db.query(Todo.todoTabel);
     return todos.length == 0 ? [] : todos.map((e) => Todo.fromMap(e)).toList();
   }
+
+  Future<int> updateTodo(Todo todo) async {
+    Database db = await database;
+    return await db.update(Todo.todoTabel, todo.toMap(),
+        where: '${Todo.colId}=?', whereArgs: [todo.id]);
+  }
+
+  Future<int> deleteTodo(int id) async {
+    Database db = await database;
+    return await db
+        .delete(Todo.todoTabel, where: '${Todo.colId}=?', whereArgs: [id]);
+  }
 }

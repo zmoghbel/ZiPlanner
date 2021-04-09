@@ -21,7 +21,29 @@ class TodoData extends ChangeNotifier {
     await db.insertTodo(todo);
   }
 
+  void onCheckTodo(Todo todo) {
+    todo.toggleDone();
+    updateTodo(todo);
+  }
+
+  void switchAlarm(Todo todo) {
+    todo.toggleAlarm();
+    updateTodo(todo);
+  }
+
   int get todoCount {
     return todoList.length;
+  }
+
+  void updateTodo(Todo todo) async {
+    todoList[todoList.indexWhere((element) => element.id == todo.id)] = todo;
+    notifyListeners();
+    await db.updateTodo(todo);
+  }
+
+  void deleteTodo(Todo todo) {
+    todoList.remove(todo);
+    notifyListeners();
+    db.deleteTodo(todo.id);
   }
 }
